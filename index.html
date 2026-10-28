@@ -280,44 +280,6 @@
       .footer-top { align-items: flex-start; flex-direction: column; }
     }
   </style>
-<style>
-/* Styles for the starter page. They only apply to its own classes. */
-.hello-page {
-  margin: 0;
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  background: #f5f2ed;
-  color: #1b1817;
-}
-
-.hello-card {
-  max-width: 28rem;
-  margin: 1.5rem;
-  padding: 2rem;
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-}
-
-.hello-card h1 {
-  margin-top: 0;
-  color: #c2560c;
-}
-
-.hello-card button {
-  padding: 0.6rem 1.2rem;
-  border: 0;
-  border-radius: 8px;
-  background: #fe9615;
-  color: #1b1817;
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-</style>
 </head>
 <body>
   <header class="navbar">
@@ -780,7 +742,7 @@
           <article class="step">
             <div class="step-number">2</div>
             <h3>Digitaler Pass</h3>
-            <p>Erhalte den Pass direkt für dein Smartphone (Wallet/PDF).</p>
+            <p>Erhalte the Pass direkt für dein Smartphone (Wallet/PDF).</p>
           </article>
           <article class="step">
             <div class="step-number">3</div>
@@ -841,8 +803,8 @@
           </ul>
         </div>
 
-        <form class="signup-form" id="interest-form" data-netlify="true" name="familigo-interesse" method="POST">
-          <input type="hidden" name="form-name" value="familigo-interesse">
+        <!-- Formspree Endpoint Integration -->
+        <form class="signup-form" id="interest-form" action="https://formspree.io/f/xoeeware" method="POST">
           <h3 class="form-title">Interesse vormerken</h3>
           <p class="form-subtitle">Die Felder mit * müssen ausgefüllt werden.</p>
           <div class="form-group">
@@ -1034,11 +996,19 @@
         title: "Datenschutzerklärung",
         text: `
           <h4>1. Datenschutz auf einen Blick</h4>
-          <p>Wir nehmen den Schutz Ihrer persönlichen Daten ernst.</p>
+          <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen.</p>
+          
           <h4>2. Verantwortliche Stelle</h4>
-          <p>FamiliGo (Inh. Frank Sliwka), Nideggener Str. 70, 53881 Euskirchen.</p>
-          <h4>3. Hosting & Formulare</h4>
-          <p>Hosting über IONOS & Netlify. Bei Nutzung des Formulars speichern wir Ihre Angaben zur Bearbeitung.</p>
+          <p>FamiliGo (Inh. Frank Sliwka), Nideggener Str. 70, 53881 Euskirchen.<br>E-Mail: info@familigo.de</p>
+          
+          <h4>3. Hosting (GitHub Pages)</h4>
+          <p>Wir hosten unsere Website über GitHub Pages (GitHub Inc.). Wenn Sie unsere Website besuchen, erfasst GitHub Server-Log-Dateien inklusive Ihrer IP-Adresse. Weitere Details entnehmen Sie der Datenschutzerklärung von GitHub.</p>
+          
+          <h4>4. Kontakt- und Vormerkformular (Formspree)</h4>
+          <p>Wenn Sie uns über das Formular Daten senden, werden Ihre Angaben inklusive der Kontaktdaten zur Bearbeitung der Anfrage über den Dienst Formspree (formspree.io) weitergeleitet und gespeichert.</p>
+
+          <h4>5. Ihre Rechte</h4>
+          <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenarbeitung sowie ein Recht auf Berichtigung oder Löschung.</p>
         `
       },
       kontakt: {
@@ -1075,20 +1045,5 @@
       if (event.key === "Escape") closeModal();
     });
   </script>
-<script>
-// Script for the starter page. It does nothing if the button isn't there.
-const button = document.getElementById('greet');
-const message = document.getElementById('message');
-let clicks = 0;
-
-if (button && message) {
-  button.addEventListener('click', () => {
-    clicks += 1;
-    message.textContent = `Hello! You clicked ${clicks} time${clicks === 1 ? '' : 's'}.`;
-    console.log('Button clicked', clicks);
-  });
-}
-
-</script>
 </body>
 </html>
