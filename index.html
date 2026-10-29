@@ -209,11 +209,10 @@
     .step h3 { margin-bottom: 8px; color: var(--blue); }
     .step p { color: var(--muted); font-size: 14px; }
     
-    /* Plans */
+    /* Plans - Einziger, schöner orangener Rand für beide */
     .plans-section { background: #f0f5ff; }
     .plans-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; max-width: 850px; margin: 0 auto; align-items: stretch; }
-    .plan-card { position: relative; display: flex; flex-direction: column; min-width: 0; padding: 30px; background: var(--white); border: 2px solid var(--border); border-radius: 20px; box-shadow: var(--shadow); }
-    .plan-card.is-selected { border-color: var(--orange); }
+    .plan-card { position: relative; display: flex; flex-direction: column; min-width: 0; padding: 30px; background: var(--white); border: 2px solid var(--orange); border-radius: 20px; box-shadow: var(--shadow); }
     .plan-badge { display: inline-block; align-self: flex-start; margin-bottom: 12px; padding: 5px 10px; border-radius: 100px; background: #fff0d3; color: #84510a; font-size: 12px; font-weight: 900; }
     .plan-badge[hidden] { display: none !important; }
     .plan-title { color: var(--blue); font-size: 25px; }
@@ -222,11 +221,22 @@
     .plan-desc { flex-grow: 1; margin-bottom: 23px; color: var(--muted); font-size: 14px; }
     .plan-features { margin-bottom: 24px; list-style: none; }
     .plan-features li { margin: 9px 0; font-size: 14px; }
-    .plan-select { display: flex !important; visibility: visible !important; opacity: 1 !important; width: 100%; min-height: 50px; margin-top: auto; padding: 13px 18px; border: 0; border-radius: 12px; font-size: 16px; font-weight: 900; cursor: pointer; }
-    .plan-card:not(.is-selected) .plan-select { background: var(--blue); color: var(--white); }
-    .plan-card.is-selected .plan-select { background: var(--green); color: var(--white); }
     
-    /* Pre-order form */
+    /* Checkout Buttons in Original Colors */
+    .plan-pay-buttons { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
+    .pay-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; min-height: 44px; padding: 10px 15px; border-radius: 10px; font-weight: 800; font-size: 14px; text-align: center; border: none; cursor: pointer; transition: transform 0.2s;
+    }
+    .pay-btn:hover { transform: translateY(-2px); }
+    .pay-paypal { background: #0070ba; color: #ffffff; }
+    .pay-paypal:hover { background: #005ea6; }
+    .pay-klarna { background: #ffb3c7; color: #2d151c; }
+    .pay-klarna:hover { background: #ffa0ba; }
+    .pay-sepa { background: #334155; color: #ffffff; }
+    .pay-sepa:hover { background: #1e293b; }
+    
+    /* Order form */
     .signup-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 45px; align-items: start; }
     .signup-copy h2 { margin: 9px 0 17px; color: var(--blue); font-size: clamp(30px, 4vw, 42px); line-height: 1.15; }
     .signup-copy p { margin-bottom: 16px; color: var(--muted); }
@@ -312,7 +322,7 @@
         <a href="#vorteile">Vorteile</a>
         <a href="#ziele">Ausflugsziele & Gastro</a>
         <a href="#tarife">Preise</a>
-        <a class="nav-cta" href="#vorbestellen">Pass entdecken</a>
+        <a class="nav-cta" href="#vorbestellen">Pass anfordern</a>
       </nav>
     </div>
   </header>
@@ -327,7 +337,7 @@
             Mit dem FamiliGo PASS entdeckt ihr gemeinsam spannende Ausflugsziele, kinderfreundliche Gastronomie und erlebt tolle Momente.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#tarife">Pass entdecken →</a>
+            <a class="button button-primary" href="#vorbestellen">Pass anfordern →</a>
             <a class="button button-secondary" href="#ziele">Partner ansehen</a>
           </div>
           <p class="hero-note">
@@ -338,8 +348,8 @@
           <div class="art-circle">
             <div class="family-emoji" aria-hidden="true">👨‍👩‍👧‍👦</div>
           </div>
-          <div class="floating-tag tag-top">🎟️ Ein Pass, viele Ideen</div>
-          <div class="floating-tag tag-bottom">❤️ Zeit miteinander</div>
+          <div class="floating-tag tag-top">🎟️ Regional & Fair</div>
+          <div class="floating-tag tag-bottom">❤️ Gemeinsam erleben</div>
         </div>
       </div>
     </section>
@@ -704,7 +714,7 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ 1,00 € Nachlass auf Familientarif</span>
                 <span class="destination-perk">✓ Gratis Kindereis im Gastro-Bereich</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <span class="destination-link" style="color: var(--muted); font-weight: 700;">Regionales Genuss-Highlight</span>
               </div>
             </div>
           </article>
@@ -751,82 +761,46 @@
         <div class="section-heading">
           <span class="section-kicker">Ganz einfach</span>
           <h2 class="section-title">So funktioniert FamiliGo</h2>
-          <p class="section-desc">Der Ablauf vom Interesse bis zum Ausflug.</p>
+          <p class="section-desc">Der Ablauf vom Wunsch-Pass bis zum ersten Ausflug.</p>
         </div>
         <div class="steps-grid">
           <article class="step">
             <div class="step-number">1</div>
-            <h3>Pass auswählen</h3>
-            <p>Entscheidet euch für den Monats- oder Jahres-Pass.</p>
+            <h3>Formular ausfüllen</h3>
+            <p>Trag kurz euren Namen und E-Mail-Adresse ein.</p>
           </article>
           <article class="step">
             <div class="step-number">2</div>
-            <h3>Digitaler Pass</h3>
-            <p>Erhalte the Pass direkt für dein Smartphone (Wallet/PDF).</p>
+            <h3>Sicher bezahlen</h3>
+            <p>Wähle den Pass und bezahle bequem per PayPal, Klarna oder SEPA.</p>
           </article>
           <article class="step">
             <div class="step-number">3</div>
-            <h3>Gemeinsam los</h3>
-            <p>Pass an der Kasse vorzeigen und den Rabatt sichern.</p>
+            <h3>Digitaler Pass per Mail</h3>
+            <p>Erhalte deinen Pass direkt aufs Smartphone und los geht's.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="plans-section" id="tarife">
-      <div class="container">
-        <div class="section-heading">
-          <span class="section-kicker">Eure Entscheidung</span>
-          <h2 class="section-title">Wähle deinen Pass</h2>
-          <p class="section-desc">Wählt den Tarif, der zu eurer Familie passt.</p>
-        </div>
-        <div class="plans-grid">
-          <article class="plan-card" data-plan="Monats-Pass" data-price="4,99 € / Monat">
-            <span class="plan-badge" hidden>Ausgewählt</span>
-            <h3 class="plan-title">Monats-Pass</h3>
-            <p class="plan-price">4,99 € <span>/ Monat</span></p>
-            <p class="plan-desc">Für Familien, die flexibel bleiben möchten.</p>
-            <ul class="plan-features">
-              <li>✓ Zugriff auf alle regionalen Partner & Gastro</li>
-              <li>✓ Digitaler Pass für Wallet & Smartphone</li>
-              <li>✓ Monatlicher Tarif, jederzeit kündbar</li>
-            </ul>
-            <button class="button plan-select" type="button" aria-pressed="false">Auswählen</button>
-          </article>
-
-          <article class="plan-card is-selected" data-plan="Jahres-Pass" data-price="45,00 € / Jahr">
-            <span class="plan-badge">Ausgewählt</span>
-            <h3 class="plan-title">Jahres-Pass</h3>
-            <p class="plan-price">45,00 € <span>/ Jahr</span></p>
-            <p class="plan-desc">Für das ganze Jahr voller Ausflugsziele.</p>
-            <ul class="plan-features">
-              <li>✓ Zugriff auf alle regionalen Partner & Gastro</li>
-              <li>✓ Digitaler Pass für Wallet & Smartphone</li>
-              <li>✓ Rechnerisch nur 3,75 € pro Monat</li>
-            </ul>
-            <button class="button plan-select" type="button" aria-pressed="true">Ausgewählt ✓</button>
-          </article>
-        </div>
-      </div>
-    </section>
-
+    <!-- Zuerst das Formular zur Dateneingabe -->
     <section id="vorbestellen">
       <div class="container signup-grid">
         <div class="signup-copy">
-          <span class="section-kicker">Sei von Anfang an dabei</span>
-          <h2>Interesse am FamiliGo PASS?</h2>
-          <p>Trag dich ein, um über den geplanten Start informiert zu werden.</p>
+          <span class="section-kicker">Jetzt direkt starten</span>
+          <h2>Hol dir jetzt deinen FamiliGo PASS!</h2>
+          <p>Füll einfach das Formular aus und wähle im Anschluss direkt deinen gewünschten Tarif zur sicheren Bezahlung aus.</p>
           <ul class="signup-points">
-            <li>✓ Unverbindliches Interesse bekunden</li>
-            <li>✓ Gewünschten Tarif auswählen</li>
-            <li>✓ Über Neuigkeiten informiert bleiben</li>
+            <li>✓ Unkomplizierte Dateneingabe</li>
+            <li>✓ Sichere Bezahlung via PayPal, Klarna & SEPA</li>
+            <li>✓ Sofortige digitale Zustellung per E-Mail</li>
           </ul>
         </div>
 
         <!-- Formspree Endpoint Integration -->
         <form class="signup-form" id="interest-form" action="https://formspree.io/f/xoeeware" method="POST">
-          <h3 class="form-title">Interesse vormerken</h3>
-          <p class="form-subtitle">Die Felder mit * müssen ausgefüllt werden.</p>
+          <h3 class="form-title">1. Daten eingeben</h3>
+          <p class="form-subtitle">Damit wir wissen, wem wir den Pass zuschicken dürfen (* Pflichtfelder).</p>
           <div class="form-group">
             <label for="fullname">Vor- und Nachname *</label>
             <input id="fullname" name="fullname" type="text" autocomplete="name" placeholder="Dein Name" required>
@@ -834,13 +808,6 @@
           <div class="form-group">
             <label for="email">E-Mail-Adresse *</label>
             <input id="email" name="email" type="email" autocomplete="email" placeholder="name@beispiel.de" required>
-          </div>
-          <div class="form-group">
-            <label for="pass-type">Wunsch-Pass *</label>
-            <select id="pass-type" name="pass-type" required>
-              <option value="Jahres-Pass">Jahres-Pass – 45,00 € / Jahr</option>
-              <option value="Monats-Pass">Monats-Pass – 4,99 € / Monat</option>
-            </select>
           </div>
           <div class="form-group">
             <label for="family-size">Wie viele Personen seid ihr?</label>
@@ -855,14 +822,62 @@
           </div>
           <div class="form-group">
             <label for="message">Nachricht (optional)</label>
-            <textarea id="message" name="message" placeholder="Was wäre euch beim FamiliGo PASS wichtig?"></textarea>
+            <textarea id="message" name="message" placeholder="Deine Fragen oder Anmerkungen..."></textarea>
           </div>
           <label class="form-check">
             <input id="privacy-check" type="checkbox" required>
             <span>Ich habe die Datenschutzhinweise gelesen und stimme der Verarbeitung meiner Angaben zu. *</span>
           </label>
-          <button class="button button-primary form-submit" type="submit">Interesse vormerken</button>
+          <p style="font-size: 13px; color: var(--blue); font-weight: 800; margin-top: 10px;">Wähle jetzt deinen passenden Tarif zum Bezahlen aus:</p>
         </form>
+      </div>
+    </section>
+
+    <!-- Danach die Tarife mit einheitlichem orangenen Rand -->
+    <section class="plans-section" id="tarife">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-kicker">2. Pass wählen & bezahlen</span>
+          <h2 class="section-title">Wähle deinen Tarif</h2>
+          <p class="section-desc">Klicke einfach auf deine bevorzugte Zahlungsart – danach geht der Pass direkt per Mail an dich raus!</p>
+        </div>
+        <div class="plans-grid">
+          <!-- Monats-Pass -->
+          <article class="plan-card" data-plan="Monats-Pass" data-price="4,99 € / Monat">
+            <span class="plan-badge" hidden>Ausgewählt</span>
+            <h3 class="plan-title">Monats-Pass</h3>
+            <p class="plan-price">4,99 € <span>/ Monat</span></p>
+            <p class="plan-desc">Für Familien, die flexibel bleiben möchten.</p>
+            <ul class="plan-features">
+              <li>✓ Zugriff auf alle regionalen Partner & Gastro</li>
+              <li>✓ Digitaler Pass direkt per E-Mail</li>
+              <li>✓ Monatlicher Tarif, jederzeit kündbar</li>
+            </ul>
+            <div class="plan-pay-buttons">
+              <a href="#" class="pay-btn pay-paypal">Mit PayPal bezahlen</a>
+              <a href="#" class="pay-btn pay-klarna">Mit Klarna bezahlen</a>
+              <button type="button" class="pay-btn pay-sepa" onclick="openSepaModal('Monats-Pass', '4,99 €')">SEPA-Überweisung</button>
+            </div>
+          </article>
+
+          <!-- Jahres-Pass -->
+          <article class="plan-card" data-plan="Jahres-Pass" data-price="45,00 € / Jahr">
+            <span class="plan-badge" hidden>Ausgewählt</span>
+            <h3 class="plan-title">Jahres-Pass</h3>
+            <p class="plan-price">45,00 € <span>/ Jahr</span></p>
+            <p class="plan-desc">Für das ganze Jahr voller Ausflugsziele.</p>
+            <ul class="plan-features">
+              <li>✓ Zugriff auf alle regionalen Partner & Gastro</li>
+              <li>✓ Digitaler Pass direkt per E-Mail</li>
+              <li>✓ Rechnerisch nur 3,75 € pro Monat</li>
+            </ul>
+            <div class="plan-pay-buttons">
+              <a href="#" class="pay-btn pay-paypal">Mit PayPal bezahlen</a>
+              <a href="#" class="pay-btn pay-klarna">Mit Klarna bezahlen</a>
+              <button type="button" class="pay-btn pay-sepa" onclick="openSepaModal('Jahres-Pass', '45,00 €')">SEPA-Überweisung</button>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -874,16 +889,16 @@
         </div>
         <div class="faq-list">
           <details>
-            <summary>Kann ich den FamiliGo PASS schon kaufen?</summary>
-            <p>Ein verbindlicher Verkauf startet, sobald alle Freizeitpartner und Tarife final bestätigt sind.</p>
+            <summary>Wie erhalte ich meinen FamiliGo PASS nach der Bezahlung?</summary>
+            <p>Nachdem du deine Daten im Formular eingetragen und über PayPal, Klarna oder SEPA bezahlt hast, senden wir dir deinen digitalen Pass direkt per E-Mail zu.</p>
           </details>
           <details>
-            <summary>Wie erhalte ich meinen FamiliGo PASS?</summary>
-            <p>Nach Buchung erhältst du den Pass digital aufs Smartphone (Wallet / PDF) und zeigst ihn einfach vor Ort vor.</p>
+            <summary>Wie zeige ich den Pass vor Ort vor?</summary>
+            <p>Zeige den digitalen Pass einfach unaufgefordert auf deinem Smartphone bei unseren Partnern vor, um die Rabatte zu erhalten.</p>
           </details>
           <details>
-            <summary>Ist meine Vorbestellung verbindlich?</summary>
-            <p>Nein, das Formular ist eine unverbindliche Interessenbekundung.</p>
+            <summary>Wie kann ich meine Daten ändern oder den Pass kündigen?</summary>
+            <p>Schreibe uns dazu einfach eine kurze E-Mail an info@familigo.de – wir kümmern uns sofort persönlich darum.</p>
           </details>
         </div>
       </div>
@@ -1000,32 +1015,21 @@
     });
 
     const planCards = document.querySelectorAll(".plan-card");
-    const passTypeSelect = document.getElementById("pass-type");
 
     function selectPlan(selectedCard) {
       planCards.forEach(function(card) {
         const selected = card === selectedCard;
         card.classList.toggle("is-selected", selected);
         const badge = card.querySelector(".plan-badge");
-        const button = card.querySelector(".plan-select");
         badge.hidden = !selected;
-        button.setAttribute("aria-pressed", String(selected));
-        button.textContent = selected ? "Ausgewählt ✓" : "Auswählen";
       });
-      passTypeSelect.value = selectedCard.dataset.plan;
     }
 
     planCards.forEach(function(card) {
-      card.querySelector(".plan-select").addEventListener("click", function() {
-        selectPlan(card);
-      });
-    });
-
-    passTypeSelect.addEventListener("change", function() {
-      planCards.forEach(function(card) {
-        if (card.dataset.plan === passTypeSelect.value) {
+      card.querySelectorAll(".pay-btn").forEach(function(btn) {
+        btn.addEventListener("click", function(e) {
           selectPlan(card);
-        }
+        });
       });
     });
 
@@ -1033,6 +1037,26 @@
     const modalTitle = document.getElementById("modal-title");
     const modalBody = document.getElementById("modal-body");
     const modalClose = document.querySelector(".modal-close");
+
+    // SEPA Modal Funktion mit korrekter IBAN & BIC
+    function openSepaModal(passName, passPrice) {
+      modalTitle.textContent = "SEPA-Überweisung: " + passName;
+      modalBody.innerHTML = `
+        <h4>Bankverbindung für deine Überweisung</h4>
+        <p>Bitte überweise den Betrag von <strong>` + passPrice + `</strong> auf folgendes Konto:</p>
+        <p style="background: #f4f8fb; padding: 15px; border-radius: 10px; margin: 15px 0; font-size: 14.5px; line-height: 1.6;">
+          <strong>Empfänger:</strong> FamiliGo (Frank Sliwka)<br>
+          <strong>IBAN:</strong> DE72 3701 0050 0633 8105 00<br>
+          <strong>BIC:</strong> PBNKDEFFXXX<br>
+          <strong>Betrag:</strong> ` + passPrice + `
+        </p>
+        <h4 style="color: var(--orange-dark);">Wichtiger Hinweis zum Verwendungszweck:</h4>
+        <p>Bitte gib als Verwendungszweck unbedingt <strong>„FamiliGo Pass – [Dein Name]“</strong> an, damit wir deine Zahlung blitzschnell zuordnen können.</p>
+        <p style="margin-top: 15px; font-size: 13px; color: var(--muted);">Nach Eingang der Überweisung auf unserem Konto senden wir dir deinen digitalen Pass umgehend per E-Mail zu.</p>
+      `;
+      modal.classList.add("open");
+      modalClose.focus();
+    }
 
     const legalContent = {
       impressum: {
@@ -1061,13 +1085,13 @@
           </p>
           
           <h4>3. Hosting (GitHub Pages)</h4>
-          <p>Wir hosten unsere Website über GitHub Pages (GitHub Inc.). Wenn Sie unsere Website besuchen, erfasst GitHub Server-Log-Dateien inklusive Ihrer IP-Adresse. Weitere Details entnehmen Sie der Datenschutzerklärung von GitHub.</p>
+          <p>Hosting erfolgt über GitHub Pages (GitHub Inc.). Weitere Details entnehmen Sie der Datenschutzerklärung von GitHub.</p>
           
-          <h4>4. Kontakt- und Vormerkformular (Formspree)</h4>
-          <p>Wenn Sie uns über das Formular Daten senden, werden Ihre Angaben inklusive der Kontaktdaten zur Bearbeitung der Anfrage über den Dienst Formspree (formspree.io) weitergeleitet und gespeichert.</p>
+          <h4>4. Zahlungsabwicklung & Formular (Formspree)</h4>
+          <p>Wenn Sie uns über das Formular Daten senden, werden Ihre Angaben zur Passausstellung über Formspree (formspree.io) verarbeitet. Bei Zahlungen über PayPal, Klarna oder SEPA-Überweisung werden die Zahlungsdaten über die jeweiligen Zahlungsdienstleister bzw. Bankinstitute gemäß deren Datenschutzbestimmungen abgewickelt.</p>
 
           <h4>5. Ihre Rechte</h4>
-          <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenarbeitung sowie ein Recht auf Berichtigung oder Löschung.</p>
+          <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger sowie auf Berichtigung oder Löschung.</p>
         `
       },
       kontakt: {
@@ -1081,35 +1105,40 @@
         title: "Allgemeine Geschäfts- und Nutzungsbedingungen (AGB)",
         text: `
           <h4>Präambel</h4>
-          <p>FamiliGo betreibt das regionale digitale Freizeit-Netzwerk und den FamiliGo Pass für Familien im Kreis Euskirchen und der Region auf der Website familigo.de. Diese AGB regeln sowohl die Partnerschaften mit Freizeitpartnern (B2B) als auch die Nutzung des FamiliGo Passes durch Endkunden (B2C).</p>
+          <p>FamiliGo betreibt das regionale digitale Freizeit-Netzwerk und den FamiliGo Pass für Familien im Kreis Euskirchen und der Region auf der Website familigo.de. Diese AGB regeln sowohl die Partnerschaften mit Freizeitpartnern (B2B) als auch die Nutzung und den Kauf des FamiliGo Passes durch Endkunden (B2C).</p>
           
           <h4>§ 1 Geltungsbereich</h4>
           <p>1. Diese AGB gelten für alle Verträge über die Listung und Partnerschaft zwischen dem Betreiber und den teilnehmenden Freizeitpartnern (Partner).</p>
-          <p>2. Sie gelten gleichermaßen für die Nutzung des digitalen FamiliGo Passes durch registrierte Familien und Endkunden (Passinhaber).</p>
+          <p>2. Sie gelten gleichermaßen für den Kauf und die Nutzung des digitalen FamiliGo Passes durch registrierte Familien und Endkunden (Passinhaber).</p>
 
           <h4>§ 2 Partnerschaft & Leistungen für Partner (B2B)</h4>
           <p>1. Der Vertrag kommt zustande, wenn der Partner das Angebot des Betreibers annimmt und die erforderlichen Daten übermittelt.</p>
-          <p>2. Der Betreiber stellt dem Partner eine <strong>sichtbare Platzierung</strong> auf der Plattform familigo.de zur Verfügung.</p>
+          <p>2. Der Betreiber stellt dem Partner eine sichtbare Platzierung auf der Plattform familigo.de zur Verfügung.</p>
           <p>3. Der Betreiber übernimmt keine Garantie für einen bestimmten wirtschaftlichen Erfolg oder eine Mindestanzahl an Besuchern.</p>
 
           <h4>§ 3 Vorteilsgewährung und Rabattaktionen</h4>
           <p>1. Der Partner verpflichtet sich, den kommunizierten Vorteil (z.B. Nachlass oder Extra vor Ort) für Inhaber des FamiliGo Passes zuverlässig zu gewähren.</p>
           <p>2. Soweit nicht anders vereinbart, gilt ein digitaler Vorteil pro Familie bzw. Passinhaber pro Besuch.</p>
 
-          <h4>§ 4 Zahlungsverkehr und Gebühren</h4>
-          <p>1. Die grundsätzliche Basis-Listung und sichtbare Platzierung im Rahmen der Standard-Partnerschaft sind für den Partner 100% kostenfrei.</p>
-          <p>2. Der Betreiber agiert als Kleinunternehmer im Sinne des § 19 UStG und weist daher keine Umsatzsteuer aus.</p>
+          <h4>§ 4 Zahlungsverkehr, Preise & Gebühren (B2C & B2B)</h4>
+          <p>1. Die grundsätzliche Basis-Listung für Freizeitpartner ist 100 % kostenfrei.</p>
+          <p>2. Für Endkunden gelten die auf der Website ausgewiesenen Preise für den Monats- oder Jahres-Pass. Der Betreiber agiert als Kleinunternehmer im Sinne des § 19 UStG und weist daher keine Umsatzsteuer aus.</p>
+          <p>3. Als Zahlungsarten stehen PayPal, Klarna sowie die klassische SEPA-Überweisung zur Verfügung.</p>
 
-          <h4>§ 5 Nutzungsbedingungen für den FamiliGo Pass (Passinhaber)</h4>
+          <h4>§ 5 Vertragsschluss & Lieferung des FamiliGo Passes</h4>
+          <p>1. Der Vertrag über den Erwerb des Passes kommt durch das Ausfüllen des Formulars und die anschließende Durchführung der Zahlung (bzw. Einleitung der SEPA-Überweisung) zustande.</p>
+          <p>2. Der digitale Pass wird nach erfolgreicher Zahlungsbestätigung direkt per E-Mail an die vom Kunden genannte E-Mail-Adresse zugestellt.</p>
+
+          <h4>§ 6 Nutzungsbedingungen für den Passinhaber (B2C)</h4>
           <p>1. <strong>Nicht-Übertragbarkeit:</strong> Der FamiliGo Pass ist personalisiert und gilt ausschließlich für die genannte Familie. Eine Weitergabe, ein Verkauf oder eine Übertragung an Dritte ist strikt untersagt.</p>
           <p>2. <strong>Einlöse-Limit:</strong> Jeder Vorteil kann von einer Familie pro Besuch bzw. im angegebenen Zeitraum nur einmal eingelöst werden.</p>
-          <p>3. <strong>Vorzeigepflicht:</strong> Der digitale Pass muss beim Partner unaufgefordert auf dem Smartphone im aktiven Zustand vorgezeigt werden. Screenshots oder Kopien berechtigen nicht zum Rabatt.</p>
+          <p>3. <strong>Vorzeigepflicht:</strong> Der digitale Pass muss beim Partner unaufgefordert auf dem Smartphone im aktiven Zustand vorgezeigt werden.</p>
           <p>4. <strong>Keine Barauszahlung:</strong> Eine Barauszahlung von Rabatten oder Sachleistungen ist ausgeschlossen.</p>
 
-          <h4>§ 6 Haftung</h4>
-          <p>1. Der Betreiber haftet unbeschränkt nur für Vorsatz und grobe Fahrlässigkeit. Für Schäden aus Streitigkeiten vor Ort zwischen Endkunde und Partner haftet der Betreiber nicht.</p>
+          <h4>§ 7 Haftung</h4>
+          <p>1. Der Betreiber haftet unbeschränkt nur für Vorsatz und grobe Fahrlässigkeit. Für Streitigkeiten vor Ort zwischen Endkunde und Partner haftet der Betreiber nicht.</p>
           
-          <h4>§ 7 Schlussbestimmungen</h4>
+          <h4>§ 8 Schlussbestimmungen</h4>
           <p>Es gilt das Recht der Bundesrepublik Deutschland. Gerichtsstand ist Euskirchen.</p>
         `
       }
