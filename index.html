@@ -23,21 +23,9 @@
       --border: #e8eaf0;
       --shadow: 0 12px 35px rgba(23, 59, 104, 0.09);
     }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Nunito', sans-serif;
-    }
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 90px;
-    }
-    body {
-      background: var(--cream);
-      color: var(--text);
-      line-height: 1.6;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Nunito', sans-serif; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { background: var(--cream); color: var(--text); line-height: 1.6; }
     a { color: inherit; text-decoration: none; }
     button, input, select, textarea { font: inherit; }
     button, a { -webkit-tap-highlight-color: transparent; }
@@ -51,33 +39,18 @@
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(10px);
     }
-    .nav-inner {
-      min-height: 76px; display: flex; justify-content: space-between; align-items: center; gap: 20px;
-    }
-    .logo {
-      display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0;
-    }
+    .nav-inner { min-height: 76px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .logo { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; }
     
-    /* Exaktes Ticket-Logo mit Ausstanzungen */
     .logo-mark {
-      position: relative;
-      width: 43px; height: 43px; display: grid; place-items: center;
-      background: var(--orange); color: var(--blue); 
-      font-size: 24px; font-weight: 900;
-      border-radius: 8px; transform: rotate(-4deg);
-      box-shadow: 0 5px 12px rgba(245, 158, 11, 0.25);
-      
-      -webkit-mask-image: 
-        radial-gradient(circle at 0% 50%, transparent 5px, black 6px), 
-        radial-gradient(circle at 100% 50%, transparent 5px, black 6px);
-      -webkit-mask-size: 51% 100%;
-      -webkit-mask-position: left, right;
-      -webkit-mask-repeat: no-repeat;
+      position: relative; width: 43px; height: 43px; display: grid; place-items: center;
+      background: var(--orange); color: var(--blue); font-size: 24px; font-weight: 900;
+      border-radius: 8px; transform: rotate(-4deg); box-shadow: 0 5px 12px rgba(245, 158, 11, 0.25);
+      -webkit-mask-image: radial-gradient(circle at 0% 50%, transparent 5px, black 6px), radial-gradient(circle at 100% 50%, transparent 5px, black 6px);
+      -webkit-mask-size: 51% 100%; -webkit-mask-position: left, right; -webkit-mask-repeat: no-repeat;
     }
     
-    .brand-text {
-      color: var(--blue); font-size: 21px; line-height: 1.1; font-weight: 900; letter-spacing: -0.7px;
-    }
+    .brand-text { color: var(--blue); font-size: 21px; line-height: 1.1; font-weight: 900; letter-spacing: -0.7px; }
     .brand-go { color: var(--orange); }
     
     .nav-links { display: flex; align-items: center; gap: 23px; font-size: 14px; font-weight: 700; }
@@ -136,25 +109,18 @@
     .section-title { margin: 9px 0 12px; color: var(--blue); font-size: clamp(29px, 4vw, 42px); line-height: 1.15; letter-spacing: -1px; }
     .section-desc { color: var(--muted); font-size: 16px; }
     
-    /* Filter Container (Rubriken & Regionen) */
+    /* Filter Container */
     .filter-container {
       max-width: 900px; margin: 0 auto 36px; display: flex; flex-direction: column; gap: 14px;
       background: var(--white); padding: 20px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(23,59,104,0.03);
     }
-    .filter-group {
-      display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
-    }
-    .filter-label {
-      font-size: 12px; font-weight: 900; color: var(--blue); text-transform: uppercase; letter-spacing: 0.8px; min-width: 85px;
-    }
+    .filter-group { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .filter-label { font-size: 12px; font-weight: 900; color: var(--blue); text-transform: uppercase; letter-spacing: 0.8px; min-width: 85px; }
     .filter-btn {
       background: #f4f8fb; border: 1px solid var(--border); color: var(--text);
-      padding: 7px 14px; border-radius: 20px; font-size: 12.5px; font-weight: 700; cursor: pointer;
-      transition: all 0.2s;
+      padding: 7px 14px; border-radius: 20px; font-size: 12.5px; font-weight: 700; cursor: pointer; transition: all 0.2s;
     }
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--blue); color: var(--white); border-color: var(--blue);
-    }
+    .filter-btn:hover, .filter-btn.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
 
     /* Benefits */
     .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -163,7 +129,7 @@
     .benefit h3 { margin-bottom: 8px; color: var(--blue); font-size: 19px; }
     .benefit p { color: var(--muted); font-size: 14px; }
     
-    /* Destinations - Professional Partner Cards */
+    /* Destinations */
     .destinations { background: var(--white); }
     .destination-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .destination-card { overflow: hidden; border: 1px solid var(--border); border-radius: 18px; background: var(--white); box-shadow: 0 6px 24px rgba(23, 59, 104, 0.05); display: flex; flex-direction: column; transition: transform 0.2s, opacity 0.3s; }
@@ -172,26 +138,10 @@
     
     .destination-badge-header {
       background: linear-gradient(135deg, #173b68, #22528c);
-      padding: 16px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #fff;
+      padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; color: #fff;
     }
-    .partner-tag {
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      background: rgba(255,255,255,0.15);
-      padding: 4px 8px;
-      border-radius: 6px;
-    }
-    .destination-location {
-      font-size: 12px;
-      font-weight: 700;
-      color: #ffd17a;
-    }
+    .partner-tag { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; background: rgba(255,255,255,0.15); padding: 4px 8px; border-radius: 6px; }
+    .destination-location { font-size: 12px; font-weight: 700; color: #ffd17a; }
     
     .destination-content { padding: 22px; display: flex; flex-direction: column; flex-grow: 1; }
     .destination-content h3 { margin-bottom: 6px; color: var(--blue); font-size: 18px; }
@@ -199,8 +149,11 @@
     
     .destination-footer { display: flex; flex-direction: column; gap: 8px; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border); }
     .destination-perk { color: var(--green); font-weight: 800; font-size: 11.5px; background: #e8f5e9; padding: 5px 8px; border-radius: 6px; display: flex; align-items: center; gap: 6px; }
-    .destination-link { font-size: 13px; font-weight: 800; color: var(--blue); display: inline-flex; align-items: center; gap: 5px; margin-top: 4px; }
+    .destination-links-row { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; font-size: 13px; font-weight: 800; }
+    .destination-link { color: var(--blue); display: inline-flex; align-items: center; gap: 5px; }
     .destination-link:hover { color: var(--orange-dark); }
+    .maps-link { color: #d97706; display: inline-flex; align-items: center; gap: 4px; font-size: 12px; }
+    .maps-link:hover { text-decoration: underline; }
     
     /* How it works */
     .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
@@ -209,7 +162,7 @@
     .step h3 { margin-bottom: 8px; color: var(--blue); }
     .step p { color: var(--muted); font-size: 14px; }
     
-    /* Plans - Einziger, schöner orangener Rand für beide */
+    /* Plans */
     .plans-section { background: #f0f5ff; }
     .plans-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; max-width: 850px; margin: 0 auto; align-items: stretch; }
     .plan-card { position: relative; display: flex; flex-direction: column; min-width: 0; padding: 30px; background: var(--white); border: 2px solid var(--orange); border-radius: 20px; box-shadow: var(--shadow); }
@@ -222,7 +175,6 @@
     .plan-features { margin-bottom: 24px; list-style: none; }
     .plan-features li { margin: 9px 0; font-size: 14px; }
     
-    /* Checkout Buttons in Original Colors */
     .plan-pay-buttons { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
     .pay-btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -231,8 +183,6 @@
     .pay-btn:hover { transform: translateY(-2px); }
     .pay-paypal { background: #0070ba; color: #ffffff; }
     .pay-paypal:hover { background: #005ea6; }
-    .pay-klarna { background: #ffb3c7; color: #2d151c; }
-    .pay-klarna:hover { background: #ffa0ba; }
     .pay-sepa { background: #334155; color: #ffffff; }
     .pay-sepa:hover { background: #1e293b; }
     
@@ -251,8 +201,18 @@
     .form-group textarea { min-height: 90px; resize: vertical; }
     .form-check { display: flex; align-items: flex-start; gap: 10px; margin: 18px 0; font-size: 12px; color: var(--muted); }
     .form-check input { margin-top: 5px; flex-shrink: 0; }
-    .form-submit { width: 100%; border: none; }
     
+    .form-success-box {
+      display: none; background: #e8f5e9; border: 2px solid #16794b; border-radius: 14px; padding: 25px; text-align: center; color: #16794b; margin-top: 15px;
+    }
+    .form-success-box h3 { font-size: 20px; font-weight: 900; margin-bottom: 8px; color: #16794b; }
+    .form-success-box p { font-size: 14px; color: #263449; }
+
+    .btn-submit {
+      background: var(--orange); color: var(--blue); width: 100%; padding: 15px; border: none; border-radius: 12px; font-size: 16px; font-weight: 900; cursor: pointer; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3); transition: background 0.2s;
+    }
+    .btn-submit:hover { background: #e08e04; }
+
     /* FAQ */
     .faq-section { background: var(--white); }
     .faq-list { max-width: 800px; margin: 0 auto; }
@@ -269,17 +229,17 @@
     .footer-links a:hover { color: var(--orange); }
     .footer-bottom { padding-top: 20px; color: #cfdaea; font-size: 11px; }
     
-    /* Legal dialogs */
+    /* Modal */
     .modal { position: fixed; inset: 0; z-index: 200; display: none; justify-content: center; align-items: center; padding: 20px; background: rgba(10, 24, 43, 0.65); }
     .modal.open { display: flex; }
-    .modal-content { width: min(600px, 100%); max-height: 85vh; overflow-y: auto; padding: 28px; border-radius: 18px; background: var(--white); }
-    .modal-head { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 15px; }
+    .modal-content { width: min(700px, 100%); max-height: 85vh; overflow-y: auto; padding: 32px; border-radius: 18px; background: var(--white); }
+    .modal-head { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 20px; border-bottom: 2px solid var(--border); padding-bottom: 12px; }
     .modal-head h2 { color: var(--blue); font-size: 24px; }
     .modal-close { width: 38px; height: 38px; border: none; border-radius: 10px; background: #edf1f7; cursor: pointer; font-size: 22px; }
-    .modal-content p, .modal-content h4 { margin: 12px 0 6px; color: var(--muted); font-size: 14px; }
-    .modal-content h4 { color: var(--blue); font-weight: 800; font-size: 15px; }
+    .modal-content p, .modal-content li { margin: 8px 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .modal-content h3, .modal-content h4 { color: var(--blue); font-weight: 800; margin-top: 20px; margin-bottom: 8px; }
 
-    /* Cookie Banner Overlay */
+    /* Cookie Banner */
     .cookie-banner {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
       background: #173b68; color: #ffffff; padding: 20px;
@@ -291,15 +251,12 @@
     .cookie-text { font-size: 13.5px; color: #eaf2ff; line-height: 1.5; }
     .cookie-text a { color: #f59e0b; text-decoration: underline; }
     .cookie-actions { display: flex; flex-wrap: wrap; gap: 10px; }
-    .cookie-btn {
-      padding: 10px 18px; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer; border: none;
-    }
+    .cookie-btn { padding: 10px 18px; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer; border: none; }
     .cookie-accept { background: #f59e0b; color: #172033; }
     .cookie-accept:hover { background: #ffc04d; }
     .cookie-decline { background: rgba(255,255,255,0.15); color: #ffffff; }
     .cookie-decline:hover { background: rgba(255,255,255,0.25); }
     
-    /* Mobile */
     @media (max-width: 900px) {
       .nav-inner { min-height: 70px; }
       .nav-links { gap: 12px; }
@@ -383,7 +340,7 @@
       </div>
     </section>
 
-    <!-- Ausflugsziele & Gastronomie mit zweistufigem Filter und Muster-Platzhaltern -->
+    <!-- Ausflugsziele & Gastronomie mit Google Maps Integration -->
     <section class="destinations" id="ziele">
       <div class="container">
         <div class="section-heading">
@@ -392,7 +349,6 @@
           <p class="section-desc">Filtere ganz einfach nach Rubriken oder direkt nach Stadtteilen und Regionen.</p>
         </div>
 
-        <!-- Filter-Leiste -->
         <div class="filter-container">
           <div class="filter-group">
             <span class="filter-label">Rubrik:</span>
@@ -413,7 +369,7 @@
         </div>
         
         <div class="destination-grid">
-          <!-- Muster-Karte 1 -->
+          <!-- Karte 1 -->
           <article class="destination-card" data-rubrik="freizeit" data-region="mechernich">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -425,12 +381,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ 1x Kinder-Eintritt frei (mit Vollzahler)</span>
                 <span class="destination-perk">✓ 10% Nachlass auf Aktions-Tickets</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <div class="destination-links-row">
+                  <a href="#" class="destination-link">Website besuchen ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Freilichtmuseum+Mechernich" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 2 -->
+          <!-- Karte 2 -->
           <article class="destination-card" data-rubrik="freizeit" data-region="mechernich">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -442,12 +401,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ Kostenlose Portion Tierfutter</span>
                 <span class="destination-perk">✓ 1,50 € Rabatt auf Kindereintritt</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <div class="destination-links-row">
+                  <a href="#" class="destination-link">Website besuchen ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Tierpark+Mechernich" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 3 -->
+          <!-- Karte 3 -->
           <article class="destination-card" data-rubrik="freizeit" data-region="region">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -459,12 +421,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ 10% Rabatt auf den Tageseintritt</span>
                 <span class="destination-perk">✓ Gratis Verleih-Gutschein</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <div class="destination-links-row">
+                  <a href="#" class="destination-link">Website besuchen ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Spieleland+Euskirchen+Umgebung" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 4 -->
+          <!-- Karte 4 -->
           <article class="destination-card" data-rubrik="freizeit gastro" data-region="mechernich">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -476,12 +441,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ 1–2 € Ermäßigung auf Märkte</span>
                 <span class="destination-perk">✓ 10% Rabatt in der Gastronomie</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <div class="destination-links-row">
+                  <a href="#" class="destination-link">Website besuchen ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Burg+Mechernich" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 5 -->
+          <!-- Karte 5 -->
           <article class="destination-card" data-rubrik="freizeit" data-region="zülpich">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -493,12 +461,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ Familienkarte zum Sonderpreis</span>
                 <span class="destination-perk">✓ Kostenlose Kinder-Rätselrallye</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <div class="destination-links-row">
+                  <a href="#" class="destination-link">Website besuchen ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Museum+Zülpich" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 6 -->
+          <!-- Karte 6 -->
           <article class="destination-card" data-rubrik="freizeit" data-region="zülpich">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -510,12 +481,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ 20% Rabatt im Sommertarif</span>
                 <span class="destination-perk">✓ Kostenloser Minigolf-Verleih</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <div class="destination-links-row">
+                  <a href="#" class="destination-link">Website besuchen ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Seepark+Zülpich" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 7 -->
+          <!-- Karte 7 -->
           <article class="destination-card" data-rubrik="wellness" data-region="mechernich">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -527,12 +501,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ 1,00 € Rabatt auf Familienkarte</span>
                 <span class="destination-perk">✓ Gratis Kindereis im Bistro</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <div class="destination-links-row">
+                  <a href="#" class="destination-link">Website besuchen ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Freizeitbad+Mechernich" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 8 -->
+          <!-- Karte 8 -->
           <article class="destination-card" data-rubrik="freizeit" data-region="mechernich">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -544,12 +521,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ Leihschuhe komplett gratis</span>
                 <span class="destination-perk">✓ 15% Rabatt auf Buchungen</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <div class="destination-links-row">
+                  <a href="#" class="destination-link">Website besuchen ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Aktivcenter+Mechernich" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 9 -->
+          <!-- Karte 9 -->
           <article class="destination-card" data-rubrik="freizeit" data-region="region">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -561,12 +541,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ Kostenfreier Audioguide für Kinder</span>
                 <span class="destination-perk">✓ 10% Nachlass auf Familieneintritt</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <div class="destination-links-row">
+                  <a href="#" class="destination-link">Website besuchen ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Naturzentrum+Eifel" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 10 -->
+          <!-- Karte 10 -->
           <article class="destination-card" data-rubrik="freizeit" data-region="region">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -578,12 +561,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ Große Futtertüte gratis</span>
                 <span class="destination-perk">✓ Kinder zahlen den halben Preis</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <div class="destination-links-row">
+                  <a href="#" class="destination-link">Website besuchen ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Wildpark+Eifel" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 11 -->
+          <!-- Karte 11 -->
           <article class="destination-card" data-rubrik="freizeit gastro" data-region="bad-münstereifel">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -595,12 +581,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ Kostenlose Freizeitgeräte-Nutzung</span>
                 <span class="destination-perk">✓ 10% Rabatt auf Waffeln & Heißgetränke</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <div class="destination-links-row">
+                  <a href="#" class="destination-link">Website besuchen ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Erholungspark+Bad+Münstereifel" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 12 -->
+          <!-- Karte 12 -->
           <article class="destination-card" data-rubrik="freizeit gastro" data-region="bad-münstereifel">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -612,12 +601,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ Zusätzlicher 10%-Rabattgutschein</span>
                 <span class="destination-perk">✓ Gratis Kindersnack in Partner-Cafés</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <div class="destination-links-row">
+                  <a href="#" class="destination-link">Website besuchen ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Bad+Münstereifel+Altstadt" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 13 -->
+          <!-- Karte 13 -->
           <article class="destination-card" data-rubrik="freizeit" data-region="region">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -629,12 +621,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ Exklusive Verlosungs-Aktionstage</span>
                 <span class="destination-perk">✓ Gastro-Vorteile (Gratis-Getränk)</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <div class="destination-links-row">
+                  <a href="#" class="destination-link">Website besuchen ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Erlebnispark" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 14 -->
+          <!-- Karte 14 -->
           <article class="destination-card" data-rubrik="wellness" data-region="region">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -646,12 +641,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ 1,00 € Rabatt auf Badeintritt</span>
                 <span class="destination-perk">✓ Upgrade auf Familien-Menü</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <div class="destination-links-row">
+                  <a href="#" class="destination-link">Website besuchen ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Wellnessbad" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 15 -->
+          <!-- Karte 15 -->
           <article class="destination-card" data-rubrik="freizeit" data-region="region">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -663,12 +661,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ 10% Rabatt auf Familienticket</span>
                 <span class="destination-perk">✓ Freier Eintritt jüngstes Kind</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <div class="destination-links-row">
+                  <a href="#" class="destination-link">Website besuchen ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Greifvogelpark" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 16 -->
+          <!-- Karte 16 -->
           <article class="destination-card" data-rubrik="wellness" data-region="euskirchen">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -680,12 +681,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ 1,00 € Rabatt auf den Eintritt</span>
                 <span class="destination-perk">✓ Gratis Getränk in der Lagune</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <div class="destination-links-row">
+                  <a href="#" class="destination-link">Website besuchen ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Thermen+Euskirchen" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 17 -->
+          <!-- Karte 17 -->
           <article class="destination-card" data-rubrik="freizeit" data-region="mechernich">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -697,12 +701,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ 1 Freifahrt inklusive</span>
                 <span class="destination-perk">✓ 15% Rabatt auf Minigolf</span>
-                <a href="#" class="destination-link">Website besuchen ↗</a>
+                <div class="destination-links-row">
+                  <a href="#" class="destination-link">Website besuchen ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Actionpark+Mechernich" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 18 -->
+          <!-- Karte 18 -->
           <article class="destination-card" data-rubrik="wellness" data-region="region">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -714,12 +721,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ 1,00 € Nachlass auf Familientarif</span>
                 <span class="destination-perk">✓ Gratis Kindereis im Gastro-Bereich</span>
-                <span class="destination-link" style="color: var(--muted); font-weight: 700;">Regionales Genuss-Highlight</span>
+                <div class="destination-links-row">
+                  <span style="color: var(--muted); font-weight: 700; font-size: 13px;">Genuss-Highlight</span>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Saunaparadies" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 19 -->
+          <!-- Karte 19 -->
           <article class="destination-card" data-rubrik="gastro" data-region="bad-münstereifel">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -731,12 +741,15 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ 10% Rabatt auf alle Heißgetränke</span>
                 <span class="destination-perk">✓ 1 gratis Kugel Eis für jedes Kind</span>
-                <span class="destination-link" style="color: var(--muted); font-weight: 700;">Regionales Genuss-Highlight</span>
+                <div class="destination-links-row">
+                  <span style="color: var(--muted); font-weight: 700; font-size: 13px;">Genuss-Highlight</span>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Kaffeerösterei+Bad+Münstereifel" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Muster-Karte 20 -->
+          <!-- Karte 20 -->
           <article class="destination-card" data-rubrik="gastro" data-region="euskirchen">
             <div class="destination-badge-header">
               <span class="partner-tag">Muster-Partner</span>
@@ -748,7 +761,10 @@
               <div class="destination-footer">
                 <span class="destination-perk">✓ 1 Gratis-Kindergericht ab 2 Vollzahlern</span>
                 <span class="destination-perk">✓ Kostenlose Apfelsaftschorle für Kinder</span>
-                <span class="destination-link" style="color: var(--muted); font-weight: 700;">Perfekt nach dem Ausflug</span>
+                <div class="destination-links-row">
+                  <span style="color: var(--muted); font-weight: 700; font-size: 13px;">Perfekt nach Ausflug</span>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Landgasthof+Euskirchen" target="_blank" class="maps-link">📍 Route auf Google Maps</a>
+                </div>
               </div>
             </div>
           </article>
@@ -772,7 +788,7 @@
           <article class="step">
             <div class="step-number">2</div>
             <h3>Sicher bezahlen</h3>
-            <p>Wähle den Pass und bezahle bequem per PayPal, Klarna oder SEPA.</p>
+            <p>Wähle den Pass und bezahle bequem per PayPal oder SEPA.</p>
           </article>
           <article class="step">
             <div class="step-number">3</div>
@@ -783,7 +799,7 @@
       </div>
     </section>
 
-    <!-- Zuerst das Formular zur Dateneingabe -->
+    <!-- Formular -->
     <section id="vorbestellen">
       <div class="container signup-grid">
         <div class="signup-copy">
@@ -792,13 +808,12 @@
           <p>Füll einfach das Formular aus und wähle im Anschluss direkt deinen gewünschten Tarif zur sicheren Bezahlung aus.</p>
           <ul class="signup-points">
             <li>✓ Unkomplizierte Dateneingabe</li>
-            <li>✓ Sichere Bezahlung via PayPal, Klarna & SEPA</li>
+            <li>✓ Sichere Bezahlung via PayPal & SEPA</li>
             <li>✓ Sofortige digitale Zustellung per E-Mail</li>
           </ul>
         </div>
 
-        <!-- Formspree Endpoint Integration -->
-        <form class="signup-form" id="interest-form" action="https://formspree.io/f/xoeeware" method="POST">
+        <form class="signup-form" id="ajax-form" action="https://formspree.io/f/xoeeware" method="POST">
           <h3 class="form-title">1. Daten eingeben</h3>
           <p class="form-subtitle">Damit wir wissen, wem wir den Pass zuschicken dürfen (* Pflichtfelder).</p>
           <div class="form-group">
@@ -828,12 +843,18 @@
             <input id="privacy-check" type="checkbox" required>
             <span>Ich habe die Datenschutzhinweise gelesen und stimme der Verarbeitung meiner Angaben zu. *</span>
           </label>
-          <p style="font-size: 13px; color: var(--blue); font-weight: 800; margin-top: 10px;">Wähle jetzt deinen passenden Tarif zum Bezahlen aus:</p>
+          
+          <button type="submit" class="btn-submit" id="submit-btn" style="margin-top: 15px;">Daten absenden & fortfahren</button>
+          
+          <div class="form-success-box" id="success-message">
+            <h3>🎉 Erfolgreich abgesendet!</h3>
+            <p>Vielen Dank! Ihre Daten wurden erfolgreich an uns übermittelt. Bitte wählen Sie jetzt Ihren gewünschten Tarif aus.</p>
+          </div>
         </form>
       </div>
     </section>
 
-    <!-- Danach die Tarife mit einheitlichem orangenen Rand -->
+    <!-- Tarife -->
     <section class="plans-section" id="tarife">
       <div class="container">
         <div class="section-heading">
@@ -855,7 +876,6 @@
             </ul>
             <div class="plan-pay-buttons">
               <a href="#" class="pay-btn pay-paypal">Mit PayPal bezahlen</a>
-              <a href="#" class="pay-btn pay-klarna">Mit Klarna bezahlen</a>
               <button type="button" class="pay-btn pay-sepa" onclick="openSepaModal('Monats-Pass', '4,99 €')">SEPA-Überweisung</button>
             </div>
           </article>
@@ -873,7 +893,6 @@
             </ul>
             <div class="plan-pay-buttons">
               <a href="#" class="pay-btn pay-paypal">Mit PayPal bezahlen</a>
-              <a href="#" class="pay-btn pay-klarna">Mit Klarna bezahlen</a>
               <button type="button" class="pay-btn pay-sepa" onclick="openSepaModal('Jahres-Pass', '45,00 €')">SEPA-Überweisung</button>
             </div>
           </article>
@@ -890,15 +909,23 @@
         <div class="faq-list">
           <details>
             <summary>Wie erhalte ich meinen FamiliGo PASS nach der Bezahlung?</summary>
-            <p>Nachdem du deine Daten im Formular eingetragen und über PayPal, Klarna oder SEPA bezahlt hast, senden wir dir deinen digitalen Pass direkt per E-Mail zu.</p>
+            <p>Nachdem du deine Daten im Formular eingetragen und über PayPal oder SEPA bezahlt hast, senden wir dir deinen digitalen Pass direkt per E-Mail an deine Adresse zu.</p>
           </details>
           <details>
             <summary>Wie zeige ich den Pass vor Ort vor?</summary>
             <p>Zeige den digitalen Pass einfach unaufgefordert auf deinem Smartphone bei unseren Partnern vor, um die Rabatte zu erhalten.</p>
           </details>
           <details>
+            <summary>Welche Zahlungsarten werden unterstützt?</summary>
+            <p>Wir unterstützen sichere Zahlungen via PayPal sowie klassische SEPA-Überweisungen, um den Kauf für dich so einfach wie möglich zu machen.</p>
+          </details>
+          <details>
+            <summary>Gibt es ein Widerrufsrecht für den digitalen Pass?</summary>
+            <p>Ja, Verbraucher haben grundsätzlich ein gesetzliches Widerrufsrecht von 14 Tagen. Bei digitalen Inhalten oder sofort bereitgestellten Dienstleistungen erlischt das Widerrufsrecht jedoch vorzeitig, wenn Sie ausdrücklich zugestimmt haben, dass wir mit der Ausführung vor Ablauf der Frist beginnen.</p>
+          </details>
+          <details>
             <summary>Wie kann ich meine Daten ändern oder den Pass kündigen?</summary>
-            <p>Schreibe uns dazu einfach eine kurze E-Mail an info@familigo.de – wir kümmern uns sofort persönlich darum.</p>
+            <p>Schreibe uns dazu einfach eine kurze E-Mail an info@familigo.de – wir kümmern uns sofort persönlich um dein Anliegen.</p>
           </details>
         </div>
       </div>
@@ -919,7 +946,7 @@
           <a href="#impressum" data-modal="impressum">Impressum</a>
           <a href="#datenschutz" data-modal="datenschutz">Datenschutz</a>
           <a href="#kontakt" data-modal="kontakt">Kontakt</a>
-          <a href="#agb" data-modal="agb">AGB</a>
+          <a href="#agb" data-modal="agb">AGB & Widerruf</a>
         </nav>
       </div>
       <div class="footer-bottom">
@@ -932,11 +959,10 @@
   <div class="cookie-banner" id="cookie-banner">
     <div class="cookie-inner">
       <p class="cookie-text">
-        Wir nutzen Cookies und externe Dienste, um unsere Website zu verbessern und Ihnen relevante Inhalte (z. B. von Social Media) anzuzeigen. Weitere Informationen finden Sie in unserer <a href="#datenschutz" data-modal="datenschutz">Datenschutzerklärung</a>.
+        Wir nutzen technisch notwendige Cookies, um die Kernfunktionalität unserer Website zu gewährleisten. Weitere Informationen finden Sie in unserer <a href="#datenschutz" data-modal="datenschutz">Datenschutzerklärung</a>.
       </p>
       <div class="cookie-actions">
-        <button class="cookie-btn cookie-accept" id="cookie-accept-all">Alle akzeptieren</button>
-        <button class="cookie-btn cookie-decline" id="cookie-accept-essential">Nur essenzielle</button>
+        <button class="cookie-btn cookie-accept" id="cookie-accept-all">Einverstanden</button>
       </div>
     </div>
   </div>
@@ -954,23 +980,48 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Cookie Banner Logik
     const cookieBanner = document.getElementById("cookie-banner");
     const acceptAllBtn = document.getElementById("cookie-accept-all");
-    const acceptEssentialBtn = document.getElementById("cookie-accept-essential");
 
     if (!localStorage.getItem("cookieConsent")) {
       cookieBanner.classList.add("show");
     }
 
     acceptAllBtn.addEventListener("click", () => {
-      localStorage.setItem("cookieConsent", "all");
+      localStorage.setItem("cookieConsent", "accepted");
       cookieBanner.classList.remove("show");
     });
 
-    acceptEssentialBtn.addEventListener("click", () => {
-      localStorage.setItem("cookieConsent", "essential");
-      cookieBanner.classList.remove("show");
+    const form = document.getElementById("ajax-form");
+    const submitBtn = document.getElementById("submit-btn");
+    const successMessage = document.getElementById("success-message");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Wird gesendet...";
+
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          form.reset();
+          submitBtn.style.display = "none";
+          successMessage.style.display = "block";
+        } else {
+          alert("Es gab ein Problem beim Senden. Bitte versuchen Sie es noch einmal.");
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Daten absenden & fortfahren";
+        }
+      }).catch(error => {
+        alert("Es gab ein Netzwerkproblem. Bitte prüfen Sie Ihre Verbindung.");
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Daten absenden & fortfahren";
+      });
     });
 
     let currentRubrik = "all";
@@ -1038,7 +1089,6 @@
     const modalBody = document.getElementById("modal-body");
     const modalClose = document.querySelector(".modal-close");
 
-    // SEPA Modal Funktion mit korrekter IBAN & BIC
     function openSepaModal(passName, passPrice) {
       modalTitle.textContent = "SEPA-Überweisung: " + passName;
       modalBody.innerHTML = `
@@ -1062,20 +1112,22 @@
       impressum: {
         title: "Impressum",
         text: `
-          <h4>Angaben gemäß § 5 DDG</h4>
+          <h4>Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz)</h4>
           <p><strong>FamiliGo</strong><br>Inhaber: Frank Sliwka<br>Nideggener Str. 70<br>53881 Euskirchen</p>
           <h4>Kontakt</h4>
           <p>E-Mail: info@familigo.de<br>Web: familigo.de</p>
-          <p><em>Kleinunternehmer gemäß § 19 UStG – kein Ausweis von Umsatzsteuer.</em></p>
+          <h4>Umsatzsteuer-ID</h4>
+          <p>Kleinunternehmer gemäß § 19 UStG – es wird keine Umsatzsteuer ausgewiesen.</p>
         `
       },
       datenschutz: {
-        title: "Datenschutzerklärung",
+        title: "Ausführliche Datenschutzerklärung (DSGVO-konform)",
         text: `
-          <h4>1. Datenschutz auf einen Blick</h4>
-          <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen.</p>
+          <h3>1. Datenschutz auf einen Blick</h3>
+          <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
           
-          <h4>2. Verantwortliche Stelle</h4>
+          <h3>2. Verantwortliche Stelle</h3>
+          <p>Verantwortlich für die Datenverarbeitung auf dieser Website im Sinne der DSGVO ist:</p>
           <p>
             <strong>FamiliGo</strong><br>
             Inhaber: Frank Sliwka<br>
@@ -1083,63 +1135,56 @@
             53881 Euskirchen<br>
             E-Mail: info@familigo.de
           </p>
-          
-          <h4>3. Hosting (GitHub Pages)</h4>
-          <p>Hosting erfolgt über GitHub Pages (GitHub Inc.). Weitere Details entnehmen Sie der Datenschutzerklärung von GitHub.</p>
-          
-          <h4>4. Zahlungsabwicklung & Formular (Formspree)</h4>
-          <p>Wenn Sie uns über das Formular Daten senden, werden Ihre Angaben zur Passausstellung über Formspree (formspree.io) verarbeitet. Bei Zahlungen über PayPal, Klarna oder SEPA-Überweisung werden die Zahlungsdaten über die jeweiligen Zahlungsdienstleister bzw. Bankinstitute gemäß deren Datenschutzbestimmungen abgewickelt.</p>
 
-          <h4>5. Ihre Rechte</h4>
-          <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger sowie auf Berichtigung oder Löschung.</p>
+          <h3>3. Hosting & E-Mail-Dienste (IONOS & GitHub Pages)</h3>
+          <p><strong>GitHub Pages:</strong> Unsere Website wird über den Hosting-Dienst GitHub Pages (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA) bereitgestellt. Wenn Sie unsere Website aufrufen, erfasst GitHub Server-Log-Dateien (inkl. Ihrer IP-Adresse) zum Zweck einer sicheren und fehlerfreien Auslieferung der Website (Art. 6 Abs. 1 lit. f DSGVO).</p>
+          <p><strong>IONOS SE:</strong> Für unsere Domain und E-Mail-Kommunikation nutzen wir die Dienste der IONOS SE (Elgendorfer Str. 57, 56410 Montabaur, Deutschland). E-Mails, die an info@familigo.de gesendet werden, werden über die Server von IONOS verarbeitet und gespeichert.</p>
+
+          <h3>4. Datenerfassung auf unserer Website (Kontakt- & Bestellformular)</h3>
+          <p>Wenn Sie über unser Formular Daten (Name, E-Mail-Adresse, Gruppengröße) eingeben und absenden, nutzen wir den Dienst <strong>Formspree</strong> (Formspree Inc., USA) zur sicheren Weiterleitung der Daten per E-Mail an info@familigo.de. Die Verarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).</p>
+
+          <h3>5. Zahlungsabwicklung</h3>
+          <p>Bei der Bezahlung des FamiliGo Passes über <strong>PayPal</strong> (PayPal (Europe) S.à r.l. et Cie, S.C.A., Luxemburg) oder per klassischer <strong>SEPA-Überweisung</strong> über unser Bankinstitut werden Ihre Zahlungsdaten direkt von den Zahlungsanbietern bzw. Banken zur Abwicklung der Transaktion verarbeitet (Art. 6 Abs. 1 lit. b DSGVO zur Vertragserfüllung).</p>
+
+          <h3>6. Ihre Rechte als betroffene Person</h3>
+          <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung oder Löschung dieser Daten. Wenden Sie sich hierzu jederzeit an info@familigo.de.</p>
         `
       },
       kontakt: {
         title: "Kontakt",
         text: `
-          <h4>FamiliGo</h4>
-          <p>Frank Sliwka<br>Nideggener Str. 70<br>53881 Euskirchen<br>E-Mail: info@familigo.de</p>
+          <h4>FamiliGo – Kundenservice & Support</h4>
+          <p>Inhaber: Frank Sliwka<br>Nideggener Str. 70<br>53881 Euskirchen</p>
+          <p>E-Mail: <a href="mailto:info@familigo.de" style="color: var(--orange-dark); font-weight: 800;">info@familigo.de</a></p>
+          <p>Wir antworten in der Regel innerhalb von 24 Stunden an Werktagen.</p>
         `
       },
       agb: {
-        title: "Allgemeine Geschäfts- und Nutzungsbedingungen (AGB)",
+        title: "Allgemeine Geschäftsbedingungen (AGB) & Widerrufsbelehrung",
         text: `
-          <h4>Präambel</h4>
-          <p>FamiliGo betreibt das regionale digitale Freizeit-Netzwerk und den FamiliGo Pass für Familien im Kreis Euskirchen und der Region auf der Website familigo.de. Diese AGB regeln sowohl die Partnerschaften mit Freizeitpartnern (B2B) als auch die Nutzung und den Kauf des FamiliGo Passes durch Endkunden (B2C).</p>
-          
-          <h4>§ 1 Geltungsbereich</h4>
-          <p>1. Diese AGB gelten für alle Verträge über die Listung und Partnerschaft zwischen dem Betreiber und den teilnehmenden Freizeitpartnern (Partner).</p>
-          <p>2. Sie gelten gleichermaßen für den Kauf und die Nutzung des digitalen FamiliGo Passes durch registrierte Familien und Endkunden (Passinhaber).</p>
+          <h3>§ 1 Geltungsbereich & Anbieter</h3>
+          <p>Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge über den Erwerb des digitalen „FamiliGo Passes“ über die Website <strong>familigo.de</strong> zwischen Frank Sliwka (FamiliGo), Nideggener Str. 70, 53881 Euskirchen (nachfolgend „Anbieter“) und dem Kunden (nachfolgend „Kunde“).</p>
 
-          <h4>§ 2 Partnerschaft & Leistungen für Partner (B2B)</h4>
-          <p>1. Der Vertrag kommt zustande, wenn der Partner das Angebot des Betreibers annimmt und die erforderlichen Daten übermittelt.</p>
-          <p>2. Der Betreiber stellt dem Partner eine sichtbare Platzierung auf der Plattform familigo.de zur Verfügung.</p>
-          <p>3. Der Betreiber übernimmt keine Garantie für einen bestimmten wirtschaftlichen Erfolg oder eine Mindestanzahl an Besuchern.</p>
+          <h3>§ 2 Vertragsschluss</h3>
+          <p>1. Die Darstellung der Tarife (Monats-Pass und Jahres-Pass) stellt kein rechtlich bindendes Angebot dar, sondern eine Aufforderung zur Bestellung.</p>
+          <p>2. Durch das Ausfüllen des Formulars und das Klicken auf die Zahlungsart kommt der Vertrag über den Erwerb des digitalen Passes zustande.</p>
+          <p>3. Der Anbieter ist Kleinunternehmer gemäß § 19 UStG und weist daher keine Umsatzsteuer aus.</p>
 
-          <h4>§ 3 Vorteilsgewährung und Rabattaktionen</h4>
-          <p>1. Der Partner verpflichtet sich, den kommunizierten Vorteil (z.B. Nachlass oder Extra vor Ort) für Inhaber des FamiliGo Passes zuverlässig zu gewähren.</p>
-          <p>2. Soweit nicht anders vereinbart, gilt ein digitaler Vorteil pro Familie bzw. Passinhaber pro Besuch.</p>
+          <h3>§ 3 Leistungsumfang & Bereitstellung des Passes</h3>
+          <p>1. Der FamiliGo Pass berechtigt den Inhaber (die genannte Familie) während der gewählten Laufzeit zur Inanspruchnahme der bei den teilnehmenden Partnern hinterlegten Rabatte und Vorteile im Kreis Euskirchen und Umgebung.</p>
+          <p>2. Der digitale Pass wird nach erfolgreichem Zahlungseingang (PayPal oder SEPA-Überweisung) per E-Mail an die vom Kunden angegebene E-Mail-Adresse als digitales Dokument/Bild zugestellt.</p>
 
-          <h4>§ 4 Zahlungsverkehr, Preise & Gebühren (B2C & B2B)</h4>
-          <p>1. Die grundsätzliche Basis-Listung für Freizeitpartner ist 100 % kostenfrei.</p>
-          <p>2. Für Endkunden gelten die auf der Website ausgewiesenen Preise für den Monats- oder Jahres-Pass. Der Betreiber agiert als Kleinunternehmer im Sinne des § 19 UStG und weist daher keine Umsatzsteuer aus.</p>
-          <p>3. Als Zahlungsarten stehen PayPal, Klarna sowie die klassische SEPA-Überweisung zur Verfügung.</p>
+          <h3>§ 4 Widerrufsbelehrung für Verbraucher</h3>
+          <p><strong>Widerrufsrecht:</strong> Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsschlusses.</p>
+          <p>Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (FamiliGo, Frank Sliwka, Nideggener Str. 70, 53881 Euskirchen, E-Mail: info@familigo.de) mittels einer eindeutigen Erklärung über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren.</p>
+          <p><strong>Vorzeitiges Erlöschen des Widerrufsrechts:</strong> Das Widerrufsrecht erlischt bei einem Vertrag über die Lieferung von nicht auf einem körperlichen Datenträger befindlichen digitalen Inhalten vorzeitig, wenn der Anbieter mit der Ausführung des Vertrags begonnen hat, nachdem der Verbraucher ausdrücklich zugestimmt hat, dass der Anbieter mit der Ausführung des Vertrags vor Ablauf der Widerrufsfrist beginnt, und seine Kenntnis davon bestätigt hat, dass er durch seine Zustimmung sein Widerrufsrecht verliert.</p>
 
-          <h4>§ 5 Vertragsschluss & Lieferung des FamiliGo Passes</h4>
-          <p>1. Der Vertrag über den Erwerb des Passes kommt durch das Ausfüllen des Formulars und die anschließende Durchführung der Zahlung (bzw. Einleitung der SEPA-Überweisung) zustande.</p>
-          <p>2. Der digitale Pass wird nach erfolgreicher Zahlungsbestätigung direkt per E-Mail an die vom Kunden genannte E-Mail-Adresse zugestellt.</p>
+          <h3>§ 5 Haftung & Gewährleistung</h3>
+          <p>1. Der Anbieter übernimmt keine Gewähr dafür, dass teilnehmende Freizeitpartner während der gesamten Laufzeit des Passes unveränderte Leistungen anbieten oder fortbestehen. Bei Schließungen oder Programmänderungen einzelner Partner besteht kein Anspruch auf Erstattung des Passpreises.</p>
+          <p>2. Die Haftung für leichte Fahrlässigkeit ist ausgeschlossen, sofern keine wesentlichen Vertragspflichten verletzt wurden.</p>
 
-          <h4>§ 6 Nutzungsbedingungen für den Passinhaber (B2C)</h4>
-          <p>1. <strong>Nicht-Übertragbarkeit:</strong> Der FamiliGo Pass ist personalisiert und gilt ausschließlich für die genannte Familie. Eine Weitergabe, ein Verkauf oder eine Übertragung an Dritte ist strikt untersagt.</p>
-          <p>2. <strong>Einlöse-Limit:</strong> Jeder Vorteil kann von einer Familie pro Besuch bzw. im angegebenen Zeitraum nur einmal eingelöst werden.</p>
-          <p>3. <strong>Vorzeigepflicht:</strong> Der digitale Pass muss beim Partner unaufgefordert auf dem Smartphone im aktiven Zustand vorgezeigt werden.</p>
-          <p>4. <strong>Keine Barauszahlung:</strong> Eine Barauszahlung von Rabatten oder Sachleistungen ist ausgeschlossen.</p>
-
-          <h4>§ 7 Haftung</h4>
-          <p>1. Der Betreiber haftet unbeschränkt nur für Vorsatz und grobe Fahrlässigkeit. Für Streitigkeiten vor Ort zwischen Endkunde und Partner haftet der Betreiber nicht.</p>
-          
-          <h4>§ 8 Schlussbestimmungen</h4>
-          <p>Es gilt das Recht der Bundesrepublik Deutschland. Gerichtsstand ist Euskirchen.</p>
+          <h3>§ 6 Schlussbestimmungen</h3>
+          <p>Es gilt das Recht der Bundesrepublik Deutschland. Gerichtsstand ist Euskirchen, sofern der Kunde Kaufmann ist.</p>
         `
       }
     };
@@ -1171,4 +1216,3 @@
   </script>
 </body>
 </html>
-
