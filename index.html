@@ -195,10 +195,11 @@
     .signup-form { padding: 30px; border: 1px solid var(--border); border-radius: 20px; background: var(--white); box-shadow: var(--shadow); }
     .form-title { margin-bottom: 5px; color: var(--blue); font-size: 24px; }
     .form-subtitle { margin-bottom: 23px; color: var(--muted); font-size: 13px; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .form-group { margin-bottom: 17px; }
     .form-group label { display: block; margin-bottom: 6px; color: var(--blue); font-size: 13px; font-weight: 800; }
     .form-group input, .form-group select, .form-group textarea { display: block; width: 100%; min-height: 47px; padding: 12px; border: 1px solid #d7dce5; border-radius: 10px; background: #fff; color: var(--text); }
-    .form-group textarea { min-height: 90px; resize: vertical; }
+    .form-group textarea { min-height: 85px; resize: vertical; }
     .form-check { display: flex; align-items: flex-start; gap: 10px; margin: 18px 0; font-size: 12px; color: var(--muted); }
     .form-check input { margin-top: 5px; flex-shrink: 0; }
     
@@ -206,7 +207,7 @@
       display: none; background: #e8f5e9; border: 2px solid #16794b; border-radius: 14px; padding: 25px; text-align: center; color: #16794b; margin-top: 15px;
     }
     .form-success-box h3 { font-size: 20px; font-weight: 900; margin-bottom: 8px; color: #16794b; }
-    .form-success-box p { font-size: 14px; color: #263449; }
+    .form-success-box p { font-size: 14px; color: #263449; margin-bottom: 14px; }
 
     .btn-submit {
       background: var(--orange); color: var(--blue); width: 100%; padding: 15px; border: none; border-radius: 12px; font-size: 16px; font-weight: 900; cursor: pointer; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3); transition: background 0.2s;
@@ -273,6 +274,7 @@
       .nav-links a:not(.nav-cta) { display: none; }
       .hero { padding: 55px 0; }
       .hero-grid, .signup-grid { grid-template-columns: 1fr; }
+      .form-row-2 { grid-template-columns: 1fr; gap: 0; }
       .benefits-grid, .destination-grid, .steps-grid, .plans-grid { grid-template-columns: 1fr; }
       .footer-top { align-items: flex-start; flex-direction: column; }
       .footer-right { align-items: flex-start; width: 100%; }
@@ -794,13 +796,13 @@
         <div class="steps-grid">
           <article class="step">
             <div class="step-number">1</div>
-            <h3>Formular ausfüllen</h3>
-            <p>Trag kurz euren Namen und E-Mail-Adresse ein.</p>
+            <h3>Tarif & Daten wählen</h3>
+            <p>Wähle deinen Pass, Zahlungsart und gib Namen sowie E-Mail ein.</p>
           </article>
           <article class="step">
             <div class="step-number">2</div>
             <h3>Sicher bezahlen</h3>
-            <p>Wähle den Pass und bezahle bequem per PayPal oder SEPA.</p>
+            <p>Du wirst direkt zu PayPal oder zur SEPA-Übersicht geleitet.</p>
           </article>
           <article class="step">
             <div class="step-number">3</div>
@@ -811,23 +813,41 @@
       </div>
     </section>
 
-    <!-- Formular -->
+    <!-- Formular (1-Schritt-Bestellung) -->
     <section id="vorbestellen">
       <div class="container signup-grid">
         <div class="signup-copy">
           <span class="section-kicker">Jetzt direkt starten</span>
           <h2>Hol dir jetzt deinen FamiliGo PASS!</h2>
-          <p>Füll einfach das Formular aus und wähle im Anschluss direkt deinen gewünschten Tarif zur sicheren Bezahlung aus.</p>
+          <p>Füll einfach das Formular aus – nach dem Absenden wirst du direkt zu deiner gewählten Zahlungsart weitergeleitet.</p>
           <ul class="signup-points">
-            <li>✓ Unkomplizierte Dateneingabe</li>
+            <li>✓ Alles bequem in einem Schritt</li>
             <li>✓ Sichere Bezahlung via PayPal & SEPA</li>
             <li>✓ Sofortige digitale Zustellung per E-Mail</li>
           </ul>
         </div>
 
         <form class="signup-form" id="ajax-form" action="https://formspree.io/f/xoeeware" method="POST">
-          <h3 class="form-title">1. Daten eingeben</h3>
-          <p class="form-subtitle">Damit wir wissen, wem wir den Pass zuschicken dürfen (* Pflichtfelder).</p>
+          <h3 class="form-title">Pass anfordern</h3>
+          <p class="form-subtitle">Damit wir wissen, wem wir welchen Pass zuschicken dürfen (* Pflichtfelder).</p>
+          
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="selected-plan">Gewünschter Pass *</label>
+              <select id="selected-plan" name="tarif" required>
+                <option value="Monats-Pass (4,99 € / Monat)">Monats-Pass (4,99 € / Monat)</option>
+                <option value="Jahres-Pass (45,00 € / Jahr)" selected>Jahres-Pass (45,00 € / Jahr)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="payment-method">Zahlungsart *</label>
+              <select id="payment-method" name="zahlungsart" required>
+                <option value="PayPal">PayPal</option>
+                <option value="SEPA-Überweisung">SEPA-Überweisung</option>
+              </select>
+            </div>
+          </div>
+
           <div class="form-group">
             <label for="fullname">Vor- und Nachname *</label>
             <input id="fullname" name="fullname" type="text" autocomplete="name" placeholder="Dein Name" required>
@@ -856,23 +876,24 @@
             <span>Ich habe die Datenschutzhinweise gelesen und stimme der Verarbeitung meiner Angaben zu. *</span>
           </label>
           
-          <button type="submit" class="btn-submit" id="submit-btn" style="margin-top: 15px;">Daten absenden & fortfahren</button>
+          <button type="submit" class="btn-submit" id="submit-btn" style="margin-top: 15px;">Jetzt bestellen &amp; zur Zahlung</button>
           
           <div class="form-success-box" id="success-message">
-            <h3>Erfolgreich abgesendet!</h3>
-            <p>Vielen Dank! Ihre Daten wurden erfolgreich an uns übermittelt. Bitte wählen Sie jetzt Ihren gewünschten Tarif aus.</p>
+            <h3>🎉 Bestellung eingegangen!</h3>
+            <p id="success-text">Vielen Dank! Ihre Daten wurden übermittelt.</p>
+            <div id="success-action-area"></div>
           </div>
         </form>
       </div>
     </section>
 
-    <!-- Tarife -->
+    <!-- Tarife Übersicht -->
     <section class="plans-section" id="tarife">
       <div class="container">
         <div class="section-heading">
-          <span class="section-kicker">2. Pass wählen & bezahlen</span>
-          <h2 class="section-title">Wähle deinen Tarif</h2>
-          <p class="section-desc">Klicke einfach auf deine bevorzugte Zahlungsart – danach geht der Pass direkt per Mail an dich raus!</p>
+          <span class="section-kicker">Transparente Preise</span>
+          <h2 class="section-title">Unsere Tarife im Überblick</h2>
+          <p class="section-desc">Klicke auf einen Tarif, um ihn direkt oben im Bestellformular auszuwählen.</p>
         </div>
         <div class="plans-grid">
           <!-- Monats-Pass -->
@@ -887,8 +908,8 @@
               <li>✓ Monatlicher Tarif, jederzeit kündbar</li>
             </ul>
             <div class="plan-pay-buttons">
-              <a href="#" class="pay-btn pay-paypal">Mit PayPal bezahlen</a>
-              <button type="button" class="pay-btn pay-sepa" onclick="openSepaModal('Monats-Pass', '4,99 €')">SEPA-Überweisung</button>
+              <button type="button" class="pay-btn pay-paypal" onclick="choosePlanAndScroll('Monats-Pass (4,99 € / Monat)', 'PayPal')">Mit PayPal bezahlen</button>
+              <button type="button" class="pay-btn pay-sepa" onclick="choosePlanAndScroll('Monats-Pass (4,99 € / Monat)', 'SEPA-Überweisung')">SEPA-Überweisung</button>
             </div>
           </article>
 
@@ -904,8 +925,8 @@
               <li>✓ Rechnerisch nur 3,75 € pro Monat</li>
             </ul>
             <div class="plan-pay-buttons">
-              <a href="#" class="pay-btn pay-paypal">Mit PayPal bezahlen</a>
-              <button type="button" class="pay-btn pay-sepa" onclick="openSepaModal('Jahres-Pass', '45,00 €')">SEPA-Überweisung</button>
+              <button type="button" class="pay-btn pay-paypal" onclick="choosePlanAndScroll('Jahres-Pass (45,00 € / Jahr)', 'PayPal')">Mit PayPal bezahlen</button>
+              <button type="button" class="pay-btn pay-sepa" onclick="choosePlanAndScroll('Jahres-Pass (45,00 € / Jahr)', 'SEPA-Überweisung')">SEPA-Überweisung</button>
             </div>
           </article>
         </div>
@@ -1002,6 +1023,13 @@
   </div>
 
   <script>
+    // =========================================================================
+    // HIER DEINE ZWEI PAYPAL-ZAHLUNGSLINKS (OPTION B) EINFÜGEN:
+    // =========================================================================
+    const PAYPAL_LINK_MONAT = ""; // z.B. "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=..."
+    const PAYPAL_LINK_JAHR  = ""; // z.B. "https://www.paypal.com/ncp/payment/..."
+    // =========================================================================
+
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const cookieBanner = document.getElementById("cookie-banner");
@@ -1016,13 +1044,36 @@
       cookieBanner.classList.remove("show");
     });
 
+    // Tarif aus den Preiskarten übernehmen & nach oben zum Formular scrollen
+    function choosePlanAndScroll(planValue, paymentValue) {
+      const planSelect = document.getElementById("selected-plan");
+      const paymentSelect = document.getElementById("payment-method");
+      if (planSelect) planSelect.value = planValue;
+      if (paymentSelect) paymentSelect.value = paymentValue;
+
+      const formSection = document.getElementById("vorbestellen");
+      if (formSection) {
+        formSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
     const form = document.getElementById("ajax-form");
     const submitBtn = document.getElementById("submit-btn");
     const successMessage = document.getElementById("success-message");
+    const successText = document.getElementById("success-text");
+    const successActionArea = document.getElementById("success-action-area");
 
     form.addEventListener("submit", function(e) {
       e.preventDefault();
       const formData = new FormData(form);
+      const chosenPlan = document.getElementById("selected-plan").value;
+      const chosenPayment = document.getElementById("payment-method").value;
+      const customerName = document.getElementById("fullname").value;
+
+      const isMonat = chosenPlan.includes("Monats-Pass");
+      const passShortName = isMonat ? "Monats-Pass" : "Jahres-Pass";
+      const passPrice = isMonat ? "4,99 €" : "45,00 €";
+      const targetPaypalUrl = isMonat ? PAYPAL_LINK_MONAT : PAYPAL_LINK_JAHR;
 
       submitBtn.disabled = true;
       submitBtn.textContent = "Wird gesendet...";
@@ -1036,15 +1087,32 @@
           form.reset();
           submitBtn.style.display = "none";
           successMessage.style.display = "block";
+
+          if (chosenPayment === "SEPA-Überweisung") {
+            successText.textContent = "Vielen Dank! Deine Daten für den " + passShortName + " wurden übermittelt. Bitte überweise den Betrag über unsere Bankverbindung:";
+            successActionArea.innerHTML = `<button type="button" class="pay-btn pay-sepa" style="max-width: 280px; margin: 0 auto;" onclick="openSepaModal('${passShortName}', '${passPrice}', '${customerName.replace(/'/g, "\\'")}')">Bankverbindung anzeigen</button>`;
+            openSepaModal(passShortName, passPrice, customerName);
+          } else {
+            if (targetPaypalUrl && targetPaypalUrl.startsWith("http")) {
+              successText.textContent = "Vielen Dank! Deine Daten wurden übermittelt. Du wirst jetzt direkt zu PayPal weitergeleitet...";
+              successActionArea.innerHTML = `<a href="${targetPaypalUrl}" class="pay-btn pay-paypal" style="max-width: 280px; margin: 0 auto;">Weiter zu PayPal (${passPrice})</a>`;
+              setTimeout(() => {
+                window.location.href = targetPaypalUrl;
+              }, 800);
+            } else {
+              successText.textContent = "Vielen Dank! Deine Bestellung für den " + passShortName + " (" + passPrice + ") ist eingegangen. Der PayPal-Zahlungslink wird in Kürze freigeschaltet – wir senden dir alle Infos direkt per E-Mail!";
+              successActionArea.innerHTML = "";
+            }
+          }
         } else {
           alert("Es gab ein Problem beim Senden. Bitte versuchen Sie es noch einmal.");
           submitBtn.disabled = false;
-          submitBtn.textContent = "Daten absenden & fortfahren";
+          submitBtn.textContent = "Jetzt bestellen & zur Zahlung";
         }
       }).catch(error => {
         alert("Es gab ein Netzwerkproblem. Bitte prüfen Sie Ihre Verbindung.");
         submitBtn.disabled = false;
-        submitBtn.textContent = "Daten absenden & fortfahren";
+        submitBtn.textContent = "Jetzt bestellen & zur Zahlung";
       });
     });
 
@@ -1113,7 +1181,8 @@
     const modalBody = document.getElementById("modal-body");
     const modalClose = document.querySelector(".modal-close");
 
-    function openSepaModal(passName, passPrice) {
+    function openSepaModal(passName, passPrice, customerName) {
+      const displayName = customerName ? customerName : "[Dein Name]";
       modalTitle.textContent = "SEPA-Überweisung: " + passName;
       modalBody.innerHTML = `
         <h4>Bankverbindung für deine Überweisung</h4>
@@ -1125,7 +1194,7 @@
           <strong>Betrag:</strong> ` + passPrice + `
         </p>
         <h4 style="color: var(--orange-dark);">Wichtiger Hinweis zum Verwendungszweck:</h4>
-        <p>Bitte gib als Verwendungszweck unbedingt <strong>„FamiliGo Pass – [Dein Name]“</strong> an, damit wir deine Zahlung blitzschnell zuordnen können.</p>
+        <p>Bitte gib als Verwendungszweck unbedingt <strong>„FamiliGo Pass – ` + displayName + `“</strong> an, damit wir deine Zahlung blitzschnell zuordnen können.</p>
         <p style="margin-top: 15px; font-size: 13px; color: var(--muted);">Nach Eingang der Überweisung auf unserem Konto senden wir dir deinen digitalen Pass umgehend per E-Mail zu.</p>
       `;
       modal.classList.add("open");
