@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FamiliGo Partner-Anmeldung & Vertrag</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fff8ef;
+      font-family: 'Nunito', sans-serif;
+      margin: 0;
+      padding: 30px 15px;
+      color: #263449;
+    }
+    .form-container {
+      max-width: 650px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 3px solid #f59e0b;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(23, 59, 104, 0.12);
+    }
+    .form-header {
+      background: linear-gradient(135deg, #173b68, #22528c);
+      color: #ffffff;
+      padding: 25px 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .logo-box {
+      width: 42px; height: 42px; background: #f59e0b; color: #173b68;
+      display: grid; place-items: center; font-weight: 900; font-size: 24px;
+      border-radius: 8px; transform: rotate(-4deg);
+      flex-shrink: 0;
+      -webkit-mask-image: radial-gradient(circle at 0% 50%, transparent 5px, black 6px), radial-gradient(circle at 100% 50%, transparent 5px, black 6px);
+      -webkit-mask-size: 51% 100%; -webkit-mask-position: left, right; -webkit-mask-repeat: no-repeat;
+    }
+    .form-body {
+      padding: 30px;
+    }
+    .form-group {
+      margin-bottom: 22px;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 800;
+      color: #173b68;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+    input[type="text"], input[type="email"], input[type="tel"], textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      color: #263449;
+      background: #f4f8fb;
+      box-sizing: border-box;
+    }
+    input:focus, textarea:focus {
+      border-color: #f59e0b;
+      outline: none;
+      background: #ffffff;
+    }
+    .category-title {
+      font-size: 12px;
+      font-weight: 900;
+      color: #d97706;
+      text-transform: uppercase;
+      margin: 15px 0 8px 0;
+      letter-spacing: 0.8px;
+    }
+    /* Rabatte ohne Scrollen */
+    .checkbox-group {
+      background: #f4f8fb;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 20px;
+      overflow-y: visible;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      color: #263449;
+      cursor: pointer;
+      line-height: 1.4;
+    }
+    .checkbox-item:last-child {
+      margin-bottom: 0;
+    }
+    .checkbox-item input {
+      margin-top: 2px;
+      accent-color: #f59e0b;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    /* Vertragsbox mit Scrollen */
+    .contract-box {
+      background: #f4f8fb;
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 22px;
+      font-size: 12.5px;
+      color: #475569;
+      line-height: 1.5;
+      box-sizing: border-box;
+      width: 100%;
+      max-height: 160px;
+      overflow-y: auto;
+    }
+    .contract-box h4 {
+      color: #173b68;
+      margin: 0 0 8px 0;
+      font-size: 13.5px;
+    }
+    .contract-box p {
+      margin: 6px 0;
+    }
+    /* Perfekt ausgerichtete Einwilligung in normaler Schrift */
+    .consent-box {
+      background: #fff8ef;
+      border: 2px solid #f59e0b;
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 22px;
+      box-sizing: border-box;
+      width: 100%;
+    }
+    .consent-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #173b68;
+      cursor: pointer;
+      line-height: 1.5;
+      margin: 0;
+      text-transform: none !important;
+    }
+    .consent-label input {
+      margin-top: 2px;
+      accent-color: #f59e0b;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .btn-submit {
+      background: #f59e0b;
+      color: #173b68;
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+      transition: background 0.2s;
+    }
+    .btn-submit:hover {
+      background: #e08e04;
+    }
+    .form-success-box {
+      display: none;
+      background: #e8f5e9;
+      border: 2px solid #16794b;
+      border-radius: 14px;
+      padding: 25px;
+      text-align: center;
+      color: #16794b;
+    }
+    .form-success-box h3 { font-size: 20px; font-weight: 900; margin-bottom: 8px; color: #16794b; }
+    .form-success-box p { font-size: 14px; color: #263449; line-height: 1.5; }
+    .form-footer {
+      background-color: #122d50;
+      padding: 20px 30px;
+      text-align: center;
+      color: #cfdaea;
+      font-size: 11.5px;
+      line-height: 1.5;
+      border-top: 1px solid #1a3a63;
+    }
+    .form-footer a { color: #f59e0b; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <div class="form-header">
+      <div class="logo-box">F</div>
+      <div>
+        <h2 style="margin: 0; font-size: 20px; font-weight: 900;">FamiliGo Partner-Anmeldung</h2>
+        <p style="margin: 3px 0 0 0; font-size: 13px; color: #ffd17a;">Werden Sie offizieller FamiliGo-Partner</p>
+      </div>
+    </div>
+
+    <div class="form-body">
+      <form id="partner-ajax-form" action="https://formspree.io/f/xoeeware" method="POST">
+        
+        <div class="form-group">
+          <label>Name des Betriebs / der Einrichtung *</label>
+          <input type="text" name="Betrieb" placeholder="z. B. Freizeitpark / Café / Bowlingcenter" required>
+        </div>
+
+        <div class="form-group">
+          <label>Ansprechpartner *</label>
+          <input type="text" name="Ansprechpartner" placeholder="Vor- und Nachname" required>
+        </div>
+
+        <div class="form-group">
+          <label>E-Mail-Adresse (für Vertragsbestätigung) *</label>
+          <input type="email" name="E-Mail" placeholder="kontakt@dein-betrieb.de" required>
+        </div>
+
+        <div class="form-group">
+          <label>Telefonnummer (für Rückfragen)</label>
+          <input type="tel" name="Telefon" placeholder="02251 / ...">
+        </div>
+
+        <div class="form-group">
+          <label>Adresse / Standort (für Google Maps & Listung) *</label>
+          <input type="text" name="Adresse" placeholder="Straße, Hausnummer, Ort im Kreis Euskirchen" required>
+        </div>
+
+        <div class="form-group">
+          <label>Gewünschter Familien-Vorteil für Passinhaber *</label>
+          <div class="checkbox-group">
+            
+            <div class="category-title">Prozent-Rabatte</div>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="5 Prozent Rabatt"> 5 % Rabatt auf den regulären Preis / Eintritt</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="10 Prozent Rabatt"> 10 % Rabatt auf den regulären Preis / Eintritt</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="15 Prozent Rabatt"> 15 % Rabatt auf den regulären Preis / Eintritt</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="20 Prozent Rabatt"> 20 % Rabatt auf den regulären Preis / Eintritt</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="10 Prozent Rabatt auf Shop-Sortiment"> 10 % Rabatt auf das gesamte Shop-Sortiment</label>
+
+            <div class="category-title">Feste Euro-Rabatte</div>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="1 Euro Rabatt"> 1,00 € Rabatt auf den Eintritt / die Rechnung</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="2 Euro Rabatt"> 2,00 € Rabatt auf den Eintritt / die Rechnung</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="3 Euro Rabatt"> 3,00 € Rabatt auf den Eintritt / die Rechnung</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="5 Euro Rabatt"> 5,00 € Rabatt auf den Eintritt / die Rechnung</label>
+
+            <div class="category-title">Kinder- & Familien-Freikarten</div>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="1 Kind gratis in Begleitung"> 1 Kind erhält in Begleitung eines Vollzahlers freien Eintritt</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="Zweites Kind zum halben Preis"> Das zweite Kind erhält 50 % Rabatt</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="Kinder unter bestimmtem Alter frei"> Kinder unter X Jahren haben freien Eintritt</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="Familienticket zum Sonderpreis"> Exklusiver FamiliGo-Sonderpreis für das Familienticket</label>
+
+            <div class="category-title">Gastronomie, Café & Eisdiele</div>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="Gratis Heissgetraenk fuer Eltern"> Gratis Heißgetränk (Kaffee oder Tee) für die Eltern</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="Gratis Kugel Eis fuer Kinder"> 1 Gratis-Kugel Eis für jedes Kind</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="Gratis Dessert oder Ueberraschungssnack"> Gratis-Dessert oder kleiner Überraschungssnack</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="Gratis Kindergetraenk zum Menue"> Gratis Kindergetränk zum bestellten Menü</label>
+
+            <div class="category-title">Freizeit, Sport, Tierpark & Specials</div>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="Gratis Futtertuete"> Gratis-Futtertüte (für Tierpark / Gehege)</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="Gratis Bowlingschuhe"> Gratis Bowlingschuhe zum Familientarif</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="Kostenloser Bollerwagen-Verleih"> Kostenloser Bollerwagen-Verleih vor Ort</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="Gratis Leihschlaeger / Ausruestung"> Gratis Leihschläger / Ausrüstung (z. B. Minigolf)</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="Kleine Ueberraschung / Spielzeug gratis"> Kleine Überraschung / kleines Spielzeug gratis für Kinder</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="15 Prozent Rabatt auf Kindergeburtstage"> 15 % Rabatt auf gebuchte Kindergeburtstage</label>
+            <label class="checkbox-item"><input type="checkbox" name="Vorteil" value="Sonder-Rabatt auf Jahreskarten"> Sonder-Rabatt auf Jahres- oder Saisonkarten</label>
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Eigene / individuelle Vorteilsidee (optional)</label>
+          <input type="text" name="Individueller_Vorteil" placeholder="z. B. Eigene individuelle Aktion hier eintragen...">
+        </div>
+
+        <!-- Vertragsbox mit Scrollen -->
+        <div class="contract-box">
+          <h4>Wichtigste Vertragsbedingungen (Kooperationsvereinbarung):</h4>
+          <p><strong>1. Leistung & Kosten:</strong> Die Listung als Partner im regionalen Netzwerk FamiliGo (familigo.de) ist für den Betrieb zu 100 % kostenfrei. Es fallen keine Grundgebühren oder Provisionen an.</p>
+          <p><strong>2. Vorteilsgewährung:</strong> Der Partner verpflichtet sich, den oben ausgewählten Vorteil gegenüber Inhabern des gültigen digitalen FamiliGo Passes zuverlässig zu gewähren.</p>
+          <p><strong>3. Laufzeit & Kündigung:</strong> Die Partnerschaft läuft auf unbestimmte Zeit und kann von beiden Seiten jederzeit formlos per E-Mail mit einer Frist von 4 Wochen gekündigt werden.</p>
+          <p><strong>4. Datenschutz & Maps:</strong> Die übermittelten Daten werden ausschließlich zur Darstellung im Netzwerk, zur Routen-Verknüpfung via Google Maps und zur Vertragsabwicklung gem. DSGVO verarbeitet.</p>
+        </div>
+
+        <!-- Perfekt ausgerichtete Einwilligung in normaler Schrift -->
+        <div class="consent-box">
+          <label class="consent-label">
+            <input type="checkbox" name="Vertrags_Einwilligung" value="Akzeptiert" required> 
+            <span><strong>Vertragsbestätigung & Einwilligung:</strong> Ich bin berechtigt, diesen Vertrag für den Betrieb abzuschließen. Ich stimme den Kooperationsbedingungen, der unbestimmten Laufzeit mit 4-wöchiger Kündigungsfrist sowie der Veröffentlichung unseres Betriebs inklusive Standort-Anbindung auf <strong>familigo.de</strong> zu. <em>(Pflichtfeld)</em></span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-submit" id="partner-submit-btn">Verbindliche Partnerschaft anfragen</button>
+      </form>
+
+      <!-- Erfolgsmeldung -->
+      <div class="form-success-box" id="partner-success-box">
+        <h3>🎉 Vielen Dank für Ihre Anmeldung!</h3>
+        <p>Ihre Partnerschaft ist bei uns eingegangen. Die Bestätigungsmail mit allen Details und Bedingungen ist bereits auf dem Weg zu Ihnen!</p>
+      </div>
+
+    </div>
+
+    <div class="form-footer">
+      FamiliGo · Inhaber: Frank Sliwka · Nideggener Str. 70 · 53881 Euskirchen<br>
+      Web: <a href="https://familigo.de">familigo.de</a> | E-Mail: info@familigo.de
+    </div>
+  </div>
+
+  <script>
+    const pForm = document.getElementById("partner-ajax-form");
+    const pBtn = document.getElementById("partner-submit-btn");
+    const pSuccess = document.getElementById("partner-success-box");
+
+    pForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const formData = new FormData(pForm);
+
+      pBtn.disabled = true;
+      pBtn.textContent = "Wird verarbeitet...";
+
+      fetch(pForm.action, {
+        method: "POST",
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          pForm.style.display = "none";
+          pSuccess.style.display = "block";
+        } else {
+          alert("Es gab einen Fehler beim Übertragen. Bitte versuchen Sie es erneut.");
+          pBtn.disabled = false;
+          pBtn.textContent = "Verbindliche Partnerschaft anfragen";
+        }
+      }).catch(error => {
+        alert("Netzwerkfehler aufgetreten. Bitte prüfen Sie Ihre Verbindung.");
+        pBtn.disabled = false;
+        pBtn.textContent = "Verbindliche Partnerschaft anfragen";
+      });
+    });
+  </script>
+
+</body>
+</html>
