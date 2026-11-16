@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>FamiliGo | Pass-Prüfung</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Nunito', sans-serif; }
+    body {
+      background: #fff8ef; color: #263449; min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px;
+    }
+    .card {
+      background: #ffffff; width: min(440px, 100%); border-radius: 22px;
+      overflow: hidden; border: 1px solid #e8eaf0; box-shadow: 0 12px 35px rgba(23, 59, 104, 0.1);
+      text-align: center;
+    }
+    .card-header {
+      background: linear-gradient(135deg, #173b68, #22528c);
+      padding: 22px 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-mark {
+      position: relative; width: 40px; height: 40px; display: grid; place-items: center;
+      background: #f59e0b; color: #173b68; font-size: 22px; font-weight: 900;
+      border-radius: 8px; transform: rotate(-4deg); box-shadow: 0 5px 12px rgba(245, 158, 11, 0.25);
+      -webkit-mask-image: radial-gradient(circle at 0% 50%, transparent 5px, black 6px), radial-gradient(circle at 100% 50%, transparent 5px, black 6px);
+      -webkit-mask-size: 51% 100%; -webkit-mask-position: left, right; -webkit-mask-repeat: no-repeat;
+      mask-image: radial-gradient(circle at 0% 50%, transparent 5px, black 6px), radial-gradient(circle at 100% 50%, transparent 5px, black 6px);
+      mask-size: 51% 100%; mask-position: left, right; mask-repeat: no-repeat;
+    }
+    .brand-text { color: #ffffff; font-size: 21px; line-height: 1.1; font-weight: 900; letter-spacing: -0.7px; }
+    .brand-go { color: #f59e0b; }
+    .header-badge {
+      font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;
+      background: rgba(255, 255, 255, 0.15); color: #ffd17a; padding: 5px 10px; border-radius: 8px;
+    }
+    .card-body { padding: 30px 24px; }
+    .status-box { padding: 22px 18px; border-radius: 16px; margin-bottom: 20px; }
+    .status-valid { background: #e8f5e9; border: 2px solid #16794b; color: #16794b; }
+    .status-invalid { background: #fef2f2; border: 2px solid #dc2626; color: #dc2626; }
+    .status-icon { font-size: 46px; line-height: 1; margin-bottom: 10px; }
+    .status-title { font-size: 22px; font-weight: 900; margin-bottom: 6px; }
+    .details {
+      background: #f4f8fb; border-radius: 12px; padding: 14px; text-align: left;
+      font-size: 14px; line-height: 1.7; color: #263449;
+    }
+    .card-footer {
+      background: #122d50; color: #cfdaea; font-size: 11px; padding: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-header">
+      <div class="logo">
+        <span class="logo-mark">F</span>
+        <span class="brand-text">Famili<span class="brand-go">Go</span></span>
+      </div>
+      <span class="header-badge">Pass-Check</span>
+    </div>
+    <div class="card-body" id="result"></div>
+    <div class="card-footer">
+      Offizielle Partner-Prüfung · familigo.de
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // HIER ALLE AUSGESTELLTEN PÄSSE EINTRAGEN & VERWALTEN:
+    // status: "aktiv" = Grünes Häkchen | status: "gesperrt" = Rotes Kreuz
+    // =========================================================================
+    const PAESSE = {
+      "FG-2026-001": {
+        inhaber: "Familie Mustermann (Muster-Pass)",
+        tarif: "Jahres-Pass",
+        gueltigBis: "31.12.2027",
+        status: "aktiv"
+      },
+      "FG-2026-002": {
+        inhaber: "Max Beispiel",
+        tarif: "Monats-Pass",
+        gueltigBis: "30.11.2026",
+        status: "gesperrt"
+      }
+    };
+    // =========================================================================
+
+    const params = new URLSearchParams(window.location.search);
+    const passId = (params.get("id") || "").trim().toUpperCase();
+    const pass = PAESSE[passId];
+    const container = document.getElementById("result");
+
+    if (pass && pass.status === "aktiv") {
+      container.innerHTML = `
+        <div class="status-box status-valid">
+          <div class="status-icon">✅</div>
+          <div class="status-title">GÜLTIGER PASS</div>
+          <p style="font-size: 14px; font-weight: 700;">Berechtigt zum Partner-Vorteil</p>
+        </div>
+        <div class="details">
+          <strong>Pass-Nr.:</strong> ${passId}<br>
+          <strong>Inhaber:</strong> ${pass.inhaber}<br>
+          <strong>Tarif:</strong> ${pass.tarif}<br>
+          <strong>Gültig bis:</strong> ${pass.gueltigBis}
+        </div>
+      `;
+    } else if (pass && pass.status === "gesperrt") {
+      container.innerHTML = `
+        <div class="status-box status-invalid">
+          <div class="status-icon">❌</div>
+          <div class="status-title">UNGÜLTIG / STORNIERT</div>
+          <p style="font-size: 14px; font-weight: 700;">Dieser Pass wurde deaktiviert. Bitte keinen Rabatt gewähren.</p>
+        </div>
+        <div class="details">
+          <strong>Pass-Nr.:</strong> ${passId}<br>
+          <strong>Status:</strong> Gesperrt / Widerrufen
+        </div>
+      `;
+    } else {
+      container.innerHTML = `
+        <div class="status-box status-invalid">
+          <div class="status-icon">⚠️</div>
+          <div class="status-title">PASS NICHT GEFUNDEN</div>
+          <p style="font-size: 14px; font-weight: 700;">Keine gültige Pass-Nummer erkannt.</p>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
