@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FamiliGo | Partner-Info: Ablauf vor Ort</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Nunito', sans-serif; }
+    body { background: #fff8ef; color: #263449; line-height: 1.55; padding: 16px; }
+    .sheet {
+      max-width: 780px; margin: 0 auto; background: #fff8ef;
+      border-radius: 20px; overflow: hidden; border: 1px solid #e8eaf0;
+      box-shadow: 0 12px 35px rgba(23, 59, 104, 0.09);
+    }
+
+    /* Kopfbereich exakt wie auf der Webseite */
+    .header {
+      background: #ffffff; padding: 20px 28px;
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px;
+      border-bottom: 1px solid #e8eaf0;
+    }
+    .logo { display: inline-flex; align-items: center; gap: 11px; flex-shrink: 0; }
+    .logo-mark {
+      position: relative; width: 43px; height: 43px; display: grid; place-items: center;
+      background: #f59e0b; color: #173b68; font-size: 24px; font-weight: 900;
+      border-radius: 8px; transform: rotate(-4deg); box-shadow: 0 5px 12px rgba(245, 158, 11, 0.25);
+      -webkit-mask-image: radial-gradient(circle at 0% 50%, transparent 5px, black 6px), radial-gradient(circle at 100% 50%, transparent 5px, black 6px);
+      -webkit-mask-size: 51% 100%; -webkit-mask-position: left, right; -webkit-mask-repeat: no-repeat;
+      mask-image: radial-gradient(circle at 0% 50%, transparent 5px, black 6px), radial-gradient(circle at 100% 50%, transparent 5px, black 6px);
+      mask-size: 51% 100%; mask-position: left, right; mask-repeat: no-repeat;
+    }
+    .brand-text { color: #173b68; font-size: 22px; line-height: 1.1; font-weight: 900; letter-spacing: -0.7px; }
+    .brand-go { color: #f59e0b; }
+    .header-pill {
+      background: #173b68; color: #ffffff; padding: 8px 16px; border-radius: 10px;
+      font-size: 13px; font-weight: 800; white-space: nowrap;
+    }
+
+    /* Intro */
+    .intro { text-align: center; padding: 36px 24px 24px; }
+    .kicker { color: #d97706; font-size: 12px; font-weight: 900; letter-spacing: 1.2px; text-transform: uppercase; }
+    .intro h1 { color: #173b68; font-size: clamp(26px, 4.5vw, 36px); line-height: 1.15; margin: 8px 0 12px; letter-spacing: -0.8px; }
+    .intro p { color: #687386; font-size: 15.5px; max-width: 560px; margin: 0 auto; }
+
+    /* 3 Schritte */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 12px 24px 26px; }
+    .step-card {
+      background: #ffffff; border: 1px solid #e8eaf0; border-radius: 16px; padding: 22px 18px;
+      text-align: center; box-shadow: 0 5px 18px rgba(23, 59, 104, 0.04);
+    }
+    .step-num {
+      width: 44px; height: 44px; border-radius: 50%; background: #173b68; color: #ffffff;
+      display: grid; place-items: center; font-size: 18px; font-weight: 900; margin: 0 auto 12px;
+    }
+    .step-card h3 { color: #173b68; font-size: 16px; margin-bottom: 6px; }
+    .step-card p { color: #687386; font-size: 13.5px; }
+
+    /* Aufgeräumte Passcheck-Sektion */
+    .check-box {
+      margin: 0 24px 30px; background: #ffffff; border: 1px solid #e8eaf0;
+      border-top: 4px solid #f59e0b; border-radius: 18px; padding: 24px;
+      box-shadow: 0 6px 20px rgba(23, 59, 104, 0.05);
+    }
+    .check-box-top {
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px;
+      margin-bottom: 10px;
+    }
+    .check-box h2 { color: #173b68; font-size: 19px; font-weight: 900; }
+    .check-badge {
+      background: #e8f5e9; color: #16794b; font-size: 11.5px; font-weight: 900;
+      padding: 4px 10px; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .check-intro { color: #475569; font-size: 14px; margin-bottom: 18px; }
+
+    /* Zwei saubere Options-Karten nebeneinander */
+    .check-options {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    }
+    .option-card {
+      background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px;
+      padding: 18px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .option-title {
+      font-size: 14.5px; font-weight: 900; color: #173b68; margin-bottom: 6px;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .option-desc {
+      font-size: 13px; color: #64748b; line-height: 1.5; margin-bottom: 16px;
+    }
+    .btn-check {
+      display: block; width: 100%; text-align: center; padding: 11px 14px;
+      border-radius: 10px; font-size: 13.5px; font-weight: 900; text-decoration: none;
+      transition: transform 0.15s, background 0.2s;
+    }
+    .btn-check:hover { transform: translateY(-1px); }
+    .btn-qr-preview { background: #173b68; color: #ffffff; }
+    .btn-qr-preview:hover { background: #24528b; }
+    .btn-manual { background: #f59e0b; color: #172033; }
+    .btn-manual:hover { background: #ffc04d; }
+
+    /* Footer */
+    .footer {
+      background: #122d50; color: #ffffff; padding: 24px 28px;
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px;
+    }
+    .footer .brand-text { color: #ffffff; }
+    .footer-sub { color: #cfdaea; font-size: 12.5px; margin-top: 8px; }
+    .footer-contact { text-align: right; font-size: 13px; line-height: 1.6; }
+    .footer-contact-title { color: #f59e0b; font-weight: 800; margin-bottom: 2px; }
+    .footer-contact a { color: #ffffff; text-decoration: none; font-weight: 700; }
+
+    @media (max-width: 680px) {
+      .steps, .check-options { grid-template-columns: 1fr; }
+      .footer-contact { text-align: left; }
+    }
+    @media print {
+      body { background: #ffffff; padding: 0; }
+      .sheet { box-shadow: none; border: none; max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <!-- Kopfbereich -->
+    <div class="header">
+      <div class="logo">
+        <span class="logo-mark">F</span>
+        <span class="brand-text">Famili<span class="brand-go">Go</span></span>
+      </div>
+      <div class="header-pill">Partner-Info · Ablauf vor Ort</div>
+    </div>
+
+    <!-- Intro -->
+    <div class="intro">
+      <span class="kicker">Ganz einfach</span>
+      <h1>So funktioniert FamiliGo vor Ort</h1>
+      <p>Vom Vorzeigen des digitalen Passes bis zur direkten Einlösung an der Kasse oder im Service – in drei kurzen Schritten.</p>
+    </div>
+
+    <!-- 3 Schritte -->
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Pass vorzeigen</h3>
+        <p>Die Familie zeigt ihren digitalen FamiliGo PASS unaufgefordert auf dem Smartphone vor.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Status prüfen</h3>
+        <p>QR-Code mit der Handykamera scannen oder die Pass-Nummer kurz online eingeben – sofort sehen Sie, ob der Pass aktiv ist.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Vorteil gewähren</h3>
+        <p>Den vereinbarten FamiliGo-Vorteil direkt abziehen – ganz ohne Beleg- oder Abrechnungsaufwand.</p>
+      </div>
+    </div>
+
+    <!-- Aufgeräumte Pass-Prüfung (2 klare Karten, nichts doppelt) -->
+    <div class="check-box">
+      <div class="check-box-top">
+        <h2>Digitale Echtzeit-Prüfung in Sekunden</h2>
+        <span class="check-badge">✓ Ohne App-Installation</span>
+      </div>
+      <p class="check-intro">
+        Sie haben zwei bequeme Möglichkeiten, die Gültigkeit eines FamiliGo PASSES direkt im Browser zu prüfen:
+      </p>
+
+      <div class="check-options">
+        <!-- Option 1: QR-Scan Vorschau -->
+        <div class="option-card">
+          <div>
+            <div class="option-title">📷 Per QR-Code-Scan</div>
+            <p class="option-desc">
+              Handykamera auf den QR-Code des Passes halten – es öffnet sich sofort die Live-Statusanzeige (Gültig / Ungültig).
+            </p>
+          </div>
+          <a href="https://familigo.de/check.html?id=FG-2026-001" target="_blank" rel="noopener noreferrer" class="btn-check btn-qr-preview">
+            QR-Scan Vorschau ansehen
+          </a>
+        </div>
+
+        <!-- Option 2: Manuelle Eingabe -->
+        <div class="option-card">
+          <div>
+            <div class="option-title">⌨️ Ohne Kamera (Manuell)</div>
+            <p class="option-desc">
+              Kein Scanner griffbereit? Einfach die Pass-Nummer vom Ausweis ablesen und direkt online eingeben.
+            </p>
+          </div>
+          <a href="https://familigo.de/check.html" target="_blank" rel="noopener noreferrer" class="btn-check btn-manual">
+            Manuelle Eingabe öffnen →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div>
+        <div class="logo">
+          <span class="logo-mark">F</span>
+          <span class="brand-text">Famili<span class="brand-go">Go</span></span>
+        </div>
+        <p class="footer-sub">Gemeinsam mehr erleben – einfach für Partner &amp; Familien.</p>
+      </div>
+      <div class="footer-contact">
+        <div class="footer-contact-title">Partner-Betreuung &amp; Fragen</div>
+        <div><a href="mailto:info@familigo.de">info@familigo.de</a></div>
+        <div><a href="https://familigo.de">www.familigo.de</a></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
