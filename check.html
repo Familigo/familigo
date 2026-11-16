@@ -39,7 +39,7 @@
       font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;
       background: rgba(255, 255, 255, 0.15); color: #ffd17a; padding: 5px 10px; border-radius: 8px;
     }
-    .card-body { padding: 30px 24px; }
+    .card-body { padding: 28px 24px; }
     .status-box { padding: 22px 18px; border-radius: 16px; margin-bottom: 20px; }
     .status-valid { background: #e8f5e9; border: 2px solid #16794b; color: #16794b; }
     .status-invalid { background: #fef2f2; border: 2px solid #dc2626; color: #dc2626; }
@@ -47,7 +47,35 @@
     .status-title { font-size: 22px; font-weight: 900; margin-bottom: 6px; }
     .details {
       background: #f4f8fb; border-radius: 12px; padding: 14px; text-align: left;
-      font-size: 14px; line-height: 1.7; color: #263449;
+      font-size: 14px; line-height: 1.7; color: #263449; margin-bottom: 20px;
+    }
+    .manual-box {
+      border-top: 1px solid #e8eaf0; padding-top: 18px; text-align: left;
+    }
+    .manual-box.no-border {
+      border-top: none; padding-top: 0;
+    }
+    .manual-label {
+      display: block; font-size: 13px; font-weight: 800; color: #173b68; margin-bottom: 8px;
+    }
+    .manual-row {
+      display: flex; gap: 8px;
+    }
+    .manual-input {
+      flex: 1; min-width: 0; height: 46px; padding: 0 14px; border: 2px solid #d7dce5;
+      border-radius: 11px; font-size: 15px; font-weight: 800; color: #173b68;
+      text-transform: uppercase;
+    }
+    .manual-input:focus {
+      outline: none; border-color: #f59e0b;
+    }
+    .manual-btn {
+      height: 46px; padding: 0 18px; background: #f59e0b; color: #172033; border: none;
+      border-radius: 11px; font-size: 14px; font-weight: 900; cursor: pointer; flex-shrink: 0;
+    }
+    .manual-btn:hover { background: #ffc04d; }
+    .manual-hint {
+      font-size: 12px; color: #687386; margin-top: 8px; line-height: 1.4;
     }
     .card-footer {
       background: #122d50; color: #cfdaea; font-size: 11px; padding: 14px;
@@ -63,7 +91,17 @@
       </div>
       <span class="header-badge">Pass-Check</span>
     </div>
-    <div class="card-body" id="result"></div>
+    <div class="card-body">
+      <div id="result"></div>
+      <form class="manual-box" id="manual-form">
+        <label class="manual-label" for="pass-input">Manuelle Prüfung ohne Kamera:</label>
+        <div class="manual-row">
+          <input type="text" id="pass-input" class="manual-input" placeholder="z. B. FG-2026-001" autocomplete="off">
+          <button type="submit" class="manual-btn">Prüfen</button>
+        </div>
+        <p class="manual-hint">Pass-Nummer vom digitalen Ausweis eingeben und auf „Prüfen“ tippen.</p>
+      </form>
+    </div>
     <div class="card-footer">
       Offizielle Partner-Prüfung · familigo.de
     </div>
@@ -78,7 +116,7 @@
       "FG-2026-001": {
         inhaber: "Familie Mustermann (Muster-Pass)",
         tarif: "Jahres-Pass",
-        gueltigBis: "31.12.2027",
+        gueltigBis: "31.10.2027",
         status: "aktiv"
       },
       "FG-2026-002": {
@@ -90,46 +128,67 @@
     };
     // =========================================================================
 
-    const params = new URLSearchParams(window.location.search);
-    const passId = (params.get("id") || "").trim().toUpperCase();
-    const pass = PAESSE[passId];
     const container = document.getElementById("result");
+    const manualForm = document.getElementById("manual-form");
+    const passInput = document.getElementById("pass-input");
 
-    if (pass && pass.status === "aktiv") {
-      container.innerHTML = `
-        <div class="status-box status-valid">
-          <div class="status-icon">✅</div>
-          <div class="status-title">GÜLTIGER PASS</div>
-          <p style="font-size: 14px; font-weight: 700;">Berechtigt zum Partner-Vorteil</p>
-        </div>
-        <div class="details">
-          <strong>Pass-Nr.:</strong> ${passId}<br>
-          <strong>Inhaber:</strong> ${pass.inhaber}<br>
-          <strong>Tarif:</strong> ${pass.tarif}<br>
-          <strong>Gültig bis:</strong> ${pass.gueltigBis}
-        </div>
-      `;
-    } else if (pass && pass.status === "gesperrt") {
-      container.innerHTML = `
-        <div class="status-box status-invalid">
-          <div class="status-icon">❌</div>
-          <div class="status-title">UNGÜLTIG / STORNIERT</div>
-          <p style="font-size: 14px; font-weight: 700;">Dieser Pass wurde deaktiviert. Bitte keinen Rabatt gewähren.</p>
-        </div>
-        <div class="details">
-          <strong>Pass-Nr.:</strong> ${passId}<br>
-          <strong>Status:</strong> Gesperrt / Widerrufen
-        </div>
-      `;
-    } else {
-      container.innerHTML = `
-        <div class="status-box status-invalid">
-          <div class="status-icon">⚠️</div>
-          <div class="status-title">PASS NICHT GEFUNDEN</div>
-          <p style="font-size: 14px; font-weight: 700;">Keine gültige Pass-Nummer erkannt.</p>
-        </div>
-      `;
+    function checkPass(rawId) {
+      const passId = (rawId || "").trim().toUpperCase();
+      passInput.value = passId;
+
+      if (!passId) {
+        container.innerHTML = "";
+        manualForm.classList.add("no-border");
+        return;
+      }
+
+      manualForm.classList.remove("no-border");
+      const pass = PAESSE[passId];
+
+      if (pass && pass.status === "aktiv") {
+        container.innerHTML = `
+          <div class="status-box status-valid">
+            <div class="status-icon">✅</div>
+            <div class="status-title">GÜLTIGER PASS</div>
+            <p style="font-size: 14px; font-weight: 700;">Berechtigt zum Partner-Vorteil</p>
+          </div>
+          <div class="details">
+            <strong>Pass-Nr.:</strong> ${passId}<br>
+            <strong>Inhaber:</strong> ${pass.inhaber}<br>
+            <strong>Tarif:</strong> ${pass.tarif}<br>
+            <strong>Gültig bis:</strong> ${pass.gueltigBis}
+          </div>
+        `;
+      } else if (pass && pass.status === "gesperrt") {
+        container.innerHTML = `
+          <div class="status-box status-invalid">
+            <div class="status-icon">❌</div>
+            <div class="status-title">UNGÜLTIG / STORNIERT</div>
+            <p style="font-size: 14px; font-weight: 700;">Dieser Pass wurde deaktiviert. Bitte keinen Rabatt gewähren.</p>
+          </div>
+          <div class="details">
+            <strong>Pass-Nr.:</strong> ${passId}<br>
+            <strong>Status:</strong> Gesperrt / Widerrufen
+          </div>
+        `;
+      } else {
+        container.innerHTML = `
+          <div class="status-box status-invalid">
+            <div class="status-icon">⚠️</div>
+            <div class="status-title">PASS NICHT GEFUNDEN</div>
+            <p style="font-size: 14px; font-weight: 700;">Keine gültige Pass-Nummer erkannt.</p>
+          </div>
+        `;
+      }
     }
+
+    manualForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      checkPass(passInput.value);
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    checkPass(params.get("id"));
   </script>
 </body>
 </html>
