@@ -125,7 +125,7 @@
     /* Benefits */
     .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .benefit { padding: 27px; background: var(--white); border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 5px 20px rgba(23, 59, 104, 0.04); }
-    .benefit-icon { width: 54px; height: 54px; display: grid; place-items: center; margin-bottom: 17px; background: #fff0d3; border-radius: 15px; font-size: 28px; }
+    .benefit-icon { width: 68px; height: 68px; display: grid; place-items: center; margin-bottom: 17px; background: #fff0d3; border-radius: 18px; font-size: 38px; line-height: 1; }
     .benefit h3 { margin-bottom: 8px; color: var(--blue); font-size: 19px; }
     .benefit p { color: var(--muted); font-size: 14px; }
     
@@ -200,7 +200,7 @@
     .form-group label { display: block; margin-bottom: 6px; color: var(--blue); font-size: 13px; font-weight: 800; }
     .form-group input, .form-group select, .form-group textarea { display: block; width: 100%; min-height: 47px; padding: 12px; border: 1px solid #d7dce5; border-radius: 10px; background: #fff; color: var(--text); }
     .form-group textarea { min-height: 85px; resize: vertical; }
-    .form-check { display: flex; align-items: flex-start; gap: 10px; margin: 18px 0; font-size: 12px; color: var(--muted); }
+    .form-check { display: flex; align-items: flex-start; gap: 10px; margin: 14px 0; font-size: 12px; color: var(--muted); }
     .form-check input { margin-top: 5px; flex-shrink: 0; }
     
     .form-success-box {
@@ -807,7 +807,7 @@
           <article class="step">
             <div class="step-number">3</div>
             <h3>Digitaler Pass per Mail</h3>
-            <p>Erhalte deinen Pass direkt aufs Smartphone und los geht's.</p>
+            <p>Nach Prüfung deines Zahlungseingangs erstellen wir deinen Pass und senden ihn dir per E-Mail zu.</p>
           </article>
         </div>
       </div>
@@ -823,7 +823,7 @@
           <ul class="signup-points">
             <li>✓ Alles bequem in einem Schritt</li>
             <li>✓ Sichere Bezahlung via PayPal & SEPA</li>
-            <li>✓ Sofortige digitale Zustellung per E-Mail</li>
+            <li>✓ Digitale Zustellung per E-Mail nach Prüfung</li>
           </ul>
         </div>
 
@@ -871,16 +871,22 @@
             <label for="message">Nachricht (optional)</label>
             <textarea id="message" name="message" placeholder="Deine Fragen oder Anmerkungen..."></textarea>
           </div>
+
           <label class="form-check">
-            <input id="privacy-check" type="checkbox" required>
-            <span>Ich habe die Datenschutzhinweise gelesen und stimme der Verarbeitung meiner Angaben zu. *</span>
+            <input id="privacy-check" name="datenschutz" value="Akzeptiert" type="checkbox" required>
+            <span>Ich habe die <a href="#datenschutz" data-modal="datenschutz" style="text-decoration: underline; color: var(--blue);">Datenschutzhinweise</a> sowie die <a href="#agb" data-modal="agb" style="text-decoration: underline; color: var(--blue);">AGB</a> gelesen und stimme der Verarbeitung meiner Angaben zu. *</span>
+          </label>
+
+          <label class="form-check">
+            <input id="withdrawal-check" name="widerrufsverzicht" value="Zugestimmt" type="checkbox" required>
+            <span>Ich stimme ausdrücklich zu, dass FamiliGo vor Ablauf der 14-tägigen Widerrufsfrist mit der Bereitstellung des digitalen Passes beginnt. Mir ist bekannt, dass ich dadurch mit Bereitstellung des Passes mein Widerrufsrecht verliere (§ 356 Abs. 5 BGB). *</span>
           </label>
           
           <button type="submit" class="btn-submit" id="submit-btn" style="margin-top: 15px;">Jetzt bestellen &amp; zur Zahlung</button>
           
           <div class="form-success-box" id="success-message">
-            <h3>🎉 Bestellung eingegangen!</h3>
-            <p id="success-text">Vielen Dank! Ihre Daten wurden übermittelt.</p>
+            <h3>Bestellung eingegangen!</h3>
+            <p id="success-text">Vielen Dank! Ihre Daten wurden übermittelt. Nach Prüfung deines Zahlungseingangs erstellen wir deinen Pass und senden ihn dir per E-Mail zu.</p>
             <div id="success-action-area"></div>
           </div>
         </form>
@@ -942,7 +948,7 @@
         <div class="faq-list">
           <details>
             <summary>Wie erhalte ich meinen FamiliGo PASS nach der Bezahlung?</summary>
-            <p>Nachdem du deine Daten im Formular eingetragen und über PayPal oder SEPA bezahlt hast, senden wir dir deinen digitalen Pass direkt per E-Mail an deine Adresse zu.</p>
+            <p>Nachdem du deine Daten im Formular eingetragen und über PayPal oder SEPA bezahlt hast, prüfen wir deinen Zahlungseingang, erstellen deinen persönlichen digitalen Pass und senden ihn dir per E-Mail an deine Adresse zu.</p>
           </details>
           <details>
             <summary>Wie zeige ich den Pass vor Ort vor?</summary>
@@ -1089,18 +1095,18 @@
           successMessage.style.display = "block";
 
           if (chosenPayment === "SEPA-Überweisung") {
-            successText.textContent = "Vielen Dank! Deine Daten für den " + passShortName + " wurden übermittelt. Bitte überweise den Betrag über unsere Bankverbindung:";
+            successText.textContent = "Vielen Dank! Deine Daten für den " + passShortName + " wurden übermittelt. Bitte überweise den Betrag über unsere Bankverbindung – nach Prüfung des Zahlungseingangs erstellen wir deinen Pass und senden ihn dir per E-Mail zu:";
             successActionArea.innerHTML = `<button type="button" class="pay-btn pay-sepa" style="max-width: 280px; margin: 0 auto;" onclick="openSepaModal('${passShortName}', '${passPrice}', '${customerName.replace(/'/g, "\\'")}')">Bankverbindung anzeigen</button>`;
             openSepaModal(passShortName, passPrice, customerName);
           } else {
             if (targetPaypalUrl && targetPaypalUrl.startsWith("http")) {
-              successText.textContent = "Vielen Dank! Deine Daten wurden übermittelt. Du wirst jetzt direkt zu PayPal weitergeleitet...";
+              successText.textContent = "Vielen Dank! Deine Daten wurden übermittelt. Du wirst jetzt direkt zu PayPal weitergeleitet – nach Prüfung deines Zahlungseingangs senden wir dir deinen Pass per E-Mail zu...";
               successActionArea.innerHTML = `<a href="${targetPaypalUrl}" class="pay-btn pay-paypal" style="max-width: 280px; margin: 0 auto;">Weiter zu PayPal (${passPrice})</a>`;
               setTimeout(() => {
                 window.location.href = targetPaypalUrl;
               }, 800);
             } else {
-              successText.textContent = "Vielen Dank! Deine Bestellung für den " + passShortName + " (" + passPrice + ") ist eingegangen. Der PayPal-Zahlungslink wird in Kürze freigeschaltet – wir senden dir alle Infos direkt per E-Mail!";
+              successText.textContent = "Vielen Dank! Deine Bestellung für den " + passShortName + " (" + passPrice + ") ist eingegangen. Der PayPal-Zahlungslink wird in Kürze freigeschaltet – nach Prüfung senden wir dir alle Infos direkt per E-Mail!";
               successActionArea.innerHTML = "";
             }
           }
@@ -1195,7 +1201,7 @@
         </p>
         <h4 style="color: var(--orange-dark);">Wichtiger Hinweis zum Verwendungszweck:</h4>
         <p>Bitte gib als Verwendungszweck unbedingt <strong>„FamiliGo Pass – ` + displayName + `“</strong> an, damit wir deine Zahlung blitzschnell zuordnen können.</p>
-        <p style="margin-top: 15px; font-size: 13px; color: var(--muted);">Nach Eingang der Überweisung auf unserem Konto senden wir dir deinen digitalen Pass umgehend per E-Mail zu.</p>
+        <p style="margin-top: 15px; font-size: 13px; color: var(--muted);">Nach Eingang und Prüfung der Überweisung auf unserem Konto erstellen wir deinen digitalen Pass und senden ihn dir per E-Mail zu.</p>
       `;
       modal.classList.add("open");
       modalClose.focus();
