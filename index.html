@@ -164,57 +164,75 @@
     .step h3 { margin-bottom: 8px; color: var(--blue); }
     .step p { color: var(--muted); font-size: 14px; }
     
-    /* Plans */
+    /* Plans mit integrierten Eingabefeldern pro Kasten */
     .plans-section { background: #f0f5ff; }
-    .plans-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; max-width: 850px; margin: 0 auto; align-items: stretch; }
-    .plan-card { position: relative; display: flex; flex-direction: column; min-width: 0; padding: 30px; background: var(--white); border: 2px solid var(--orange); border-radius: 20px; box-shadow: var(--shadow); }
-    .plan-badge { display: inline-block; align-self: flex-start; margin-bottom: 12px; padding: 5px 10px; border-radius: 100px; background: #fff0d3; color: #84510a; font-size: 12px; font-weight: 900; }
-    .plan-badge[hidden] { display: none !important; }
-    .plan-title { color: var(--blue); font-size: 25px; }
-    .plan-price { margin: 13px 0 15px; color: var(--blue); font-size: 39px; line-height: 1.2; font-weight: 900; letter-spacing: -1px; }
+    .plans-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px; max-width: 980px; margin: 0 auto; align-items: stretch;
+    }
+    .plan-card {
+      position: relative; display: flex; flex-direction: column; min-width: 0;
+      padding: 30px; background: var(--white); border: 2px solid var(--orange);
+      border-radius: 22px; box-shadow: var(--shadow);
+    }
+    .plan-badge {
+      display: inline-block; align-self: flex-start; margin-bottom: 10px;
+      padding: 5px 11px; border-radius: 100px; background: #fff0d3; color: #84510a;
+      font-size: 12px; font-weight: 900;
+    }
+    .plan-title { color: var(--blue); font-size: 26px; }
+    .plan-price { margin: 10px 0 12px; color: var(--blue); font-size: 39px; line-height: 1.2; font-weight: 900; letter-spacing: -1px; }
     .plan-price span { font-size: 15px; font-weight: 600; letter-spacing: 0; color: var(--muted); }
-    .plan-desc { flex-grow: 1; margin-bottom: 23px; color: var(--muted); font-size: 14px; }
-    .plan-features { margin-bottom: 24px; list-style: none; }
-    .plan-features li { margin: 9px 0; font-size: 14px; }
+    .plan-desc { margin-bottom: 18px; color: var(--muted); font-size: 14px; }
+    .plan-features { margin-bottom: 22px; list-style: none; }
+    .plan-features li { margin: 8px 0; font-size: 14px; }
+
+    /* Integrierter Bestellbereich innerhalb jedes Pass-Kastens */
+    .card-order-box {
+      margin-top: auto; padding-top: 20px; border-top: 2px dashed #e2e8f0;
+    }
+    .card-order-title {
+      font-size: 13px; font-weight: 900; color: var(--blue); text-transform: uppercase;
+      letter-spacing: 0.6px; margin-bottom: 12px;
+    }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .form-group { margin-bottom: 12px; }
+    .form-group label { display: block; margin-bottom: 4px; color: var(--blue); font-size: 12px; font-weight: 800; }
+    .form-group input, .form-group select {
+      display: block; width: 100%; min-height: 42px; padding: 9px 11px;
+      border: 1px solid #d7dce5; border-radius: 10px; background: #f8fafc;
+      color: var(--text); font-size: 13.5px;
+    }
+    .form-group input:focus, .form-group select:focus {
+      outline: none; border-color: var(--orange); background: #ffffff;
+    }
+    .form-check {
+      display: flex; align-items: flex-start; gap: 9px; margin: 10px 0;
+      font-size: 11.5px; color: var(--muted); line-height: 1.4; cursor: pointer;
+    }
+    .form-check input {
+      margin-top: 2px; flex-shrink: 0; accent-color: var(--orange); width: 16px; height: 16px; cursor: pointer;
+    }
     
-    .plan-pay-buttons { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
+    .plan-pay-buttons { display: flex; flex-direction: column; gap: 9px; margin-top: 15px; }
     .pay-btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      width: 100%; min-height: 44px; padding: 10px 15px; border-radius: 10px; font-weight: 800; font-size: 14px; text-align: center; border: none; cursor: pointer; transition: transform 0.2s;
+      width: 100%; min-height: 46px; padding: 11px 16px; border-radius: 11px;
+      font-weight: 900; font-size: 14.5px; text-align: center; border: none; cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
     }
     .pay-btn:hover { transform: translateY(-2px); }
     .pay-paypal { background: #0070ba; color: #ffffff; }
     .pay-paypal:hover { background: #005ea6; }
     .pay-sepa { background: #334155; color: #ffffff; }
     .pay-sepa:hover { background: #1e293b; }
-    
-    /* Order form */
-    .signup-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 45px; align-items: start; }
-    .signup-copy h2 { margin: 9px 0 17px; color: var(--blue); font-size: clamp(30px, 4vw, 42px); line-height: 1.15; }
-    .signup-copy p { margin-bottom: 16px; color: var(--muted); }
-    .signup-points { list-style: none; margin-top: 20px; }
-    .signup-points li { margin: 12px 0; font-weight: 700; }
-    .signup-form { padding: 30px; border: 1px solid var(--border); border-radius: 20px; background: var(--white); box-shadow: var(--shadow); }
-    .form-title { margin-bottom: 5px; color: var(--blue); font-size: 24px; }
-    .form-subtitle { margin-bottom: 23px; color: var(--muted); font-size: 13px; }
-    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .form-group { margin-bottom: 17px; }
-    .form-group label { display: block; margin-bottom: 6px; color: var(--blue); font-size: 13px; font-weight: 800; }
-    .form-group input, .form-group select, .form-group textarea { display: block; width: 100%; min-height: 47px; padding: 12px; border: 1px solid #d7dce5; border-radius: 10px; background: #fff; color: var(--text); }
-    .form-group textarea { min-height: 85px; resize: vertical; }
-    .form-check { display: flex; align-items: flex-start; gap: 10px; margin: 14px 0; font-size: 12px; color: var(--muted); }
-    .form-check input { margin-top: 5px; flex-shrink: 0; }
-    
-    .form-success-box {
-      display: none; background: #e8f5e9; border: 2px solid #16794b; border-radius: 14px; padding: 25px; text-align: center; color: #16794b; margin-top: 15px;
-    }
-    .form-success-box h3 { font-size: 20px; font-weight: 900; margin-bottom: 8px; color: #16794b; }
-    .form-success-box p { font-size: 14px; color: #263449; margin-bottom: 14px; }
 
-    .btn-submit {
-      background: var(--orange); color: var(--blue); width: 100%; padding: 15px; border: none; border-radius: 12px; font-size: 16px; font-weight: 900; cursor: pointer; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3); transition: background 0.2s;
+    .form-success-box {
+      display: none; background: #e8f5e9; border: 2px solid #16794b; border-radius: 14px;
+      padding: 18px; text-align: center; color: #16794b; margin-top: 12px;
     }
-    .btn-submit:hover { background: #e08e04; }
+    .form-success-box h4 { font-size: 17px; font-weight: 900; margin-bottom: 6px; color: #16794b; }
+    .form-success-box p { font-size: 13px; color: #263449; margin-bottom: 12px; line-height: 1.5; }
 
     /* FAQ */
     .faq-section { background: var(--white); }
@@ -275,7 +293,7 @@
       .nav-links { gap: 12px; }
       .nav-links a:not(.nav-cta) { display: none; }
       .hero { padding: 55px 0; }
-      .hero-grid, .signup-grid { grid-template-columns: 1fr; }
+      .hero-grid { grid-template-columns: 1fr; }
       .form-row-2 { grid-template-columns: 1fr; gap: 0; }
       .benefits-grid, .destination-grid, .steps-grid, .plans-grid { grid-template-columns: 1fr; }
       .footer-top { align-items: flex-start; flex-direction: column; }
@@ -799,7 +817,7 @@
           <article class="step">
             <div class="step-number">1</div>
             <h3>Tarif &amp; Daten wählen</h3>
-            <p>Wähle deinen Pass, Zahlungsart und gib Namen sowie E-Mail ein.</p>
+            <p>Wähle deinen Pass, trage Name sowie E-Mail ein und klicke auf deine Zahlungsart.</p>
           </article>
           <article class="step">
             <div class="step-number">2</div>
@@ -815,98 +833,20 @@
       </div>
     </section>
 
-    <!-- Formular (1-Schritt-Bestellung) -->
-    <section id="vorbestellen">
-      <div class="container signup-grid">
-        <div class="signup-copy">
-          <span class="section-kicker">Jetzt direkt starten</span>
-          <h2>Hol dir jetzt deinen FamiliGo PASS!</h2>
-          <p>Füll einfach das Formular aus – nach dem Absenden wirst du direkt zu deiner gewählten Zahlungsart weitergeleitet.</p>
-          <ul class="signup-points">
-            <li>✓ Alles bequem in einem Schritt</li>
-            <li>✓ Sichere Bezahlung via PayPal &amp; SEPA</li>
-            <li>✓ Digitale Zustellung per E-Mail nach Prüfung</li>
-          </ul>
-        </div>
-
-        <form class="signup-form" id="ajax-form" action="https://formspree.io/f/xoeeware" method="POST">
-          <h3 class="form-title">Pass anfordern</h3>
-          <p class="form-subtitle">Damit wir wissen, wem wir welchen Pass zuschicken dürfen (* Pflichtfelder).</p>
-          
-          <div class="form-row-2">
-            <div class="form-group">
-              <label for="selected-plan">Gewünschter Pass *</label>
-              <select id="selected-plan" name="tarif" required>
-                <option value="Monats-Pass (4,99 € / Monat)">Monats-Pass (4,99 € / Monat)</option>
-                <option value="Jahres-Pass (45,00 € / Jahr)" selected>Jahres-Pass (45,00 € / Jahr)</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="payment-method">Zahlungsart *</label>
-              <select id="payment-method" name="zahlungsart" required>
-                <option value="PayPal">PayPal</option>
-                <option value="SEPA-Überweisung">SEPA-Überweisung</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="fullname">Vor- und Nachname *</label>
-            <input id="fullname" name="fullname" type="text" autocomplete="name" placeholder="Dein Name" required>
-          </div>
-          <div class="form-group">
-            <label for="email">E-Mail-Adresse *</label>
-            <input id="email" name="email" type="email" autocomplete="email" placeholder="name@beispiel.de" required>
-          </div>
-          <div class="form-group">
-            <label for="family-size">Wie viele Personen seid ihr?</label>
-            <select id="family-size" name="family-size">
-              <option value="">Bitte auswählen</option>
-              <option>2 Personen</option>
-              <option>3 Personen</option>
-              <option>4 Personen</option>
-              <option>5 Personen</option>
-              <option>6 oder mehr Personen</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Nachricht (optional)</label>
-            <textarea id="message" name="message" placeholder="Deine Fragen oder Anmerkungen..."></textarea>
-          </div>
-
-          <label class="form-check">
-            <input id="privacy-check" name="datenschutz" value="Akzeptiert" type="checkbox" required>
-            <span>Ich habe die <a href="#datenschutz" data-modal="datenschutz" style="text-decoration: underline; color: var(--blue);">Datenschutzhinweise</a> sowie die <a href="#agb" data-modal="agb" style="text-decoration: underline; color: var(--blue);">AGB</a> gelesen und stimme der Verarbeitung meiner Angaben zu. *</span>
-          </label>
-
-          <label class="form-check">
-            <input id="withdrawal-check" name="widerrufsverzicht" value="Zugestimmt" type="checkbox" required>
-            <span>Ich stimme ausdrücklich zu, dass FamiliGo vor Ablauf der 14-tägigen Widerrufsfrist mit der Bereitstellung des digitalen Passes beginnt. Mir ist bekannt, dass ich dadurch mit Bereitstellung des Passes mein Widerrufsrecht verliere (§ 356 Abs. 5 BGB). *</span>
-          </label>
-          
-          <button type="submit" class="btn-submit" id="submit-btn" style="margin-top: 15px;">Jetzt bestellen &amp; zur Zahlung</button>
-          
-          <div class="form-success-box" id="success-message">
-            <h3>Bestellung eingegangen!</h3>
-            <p id="success-text">Vielen Dank! Ihre Daten wurden übermittelt. Nach Prüfung deines Zahlungseingangs erstellen wir deinen Pass und senden ihn dir per E-Mail zu.</p>
-            <div id="success-action-area"></div>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <!-- Tarife Übersicht -->
+    <!-- Tarife & integrierte Bestellung pro Pass-Kasten -->
     <section class="plans-section" id="tarife">
+      <div id="vorbestellen"></div>
       <div class="container">
         <div class="section-heading">
           <span class="section-kicker">Transparente Preise</span>
-          <h2 class="section-title">Unsere Tarife im Überblick</h2>
-          <p class="section-desc">Klicke auf einen Tarif, um ihn direkt oben im Bestellformular auszuwählen.</p>
+          <h2 class="section-title">Wähle deinen FamiliGo PASS</h2>
+          <p class="section-desc">Einfach deinen Wunsch-Pass ausfüllen und direkt per PayPal oder SEPA-Überweisung anfordern.</p>
         </div>
+
         <div class="plans-grid">
-          <!-- Monats-Pass -->
-          <article class="plan-card" data-plan="Monats-Pass" data-price="4,99 € / Monat">
-            <span class="plan-badge" hidden>Ausgewählt</span>
+          <!-- Kasten 1: Monats-Pass -->
+          <article class="plan-card" data-plan="Monats-Pass" data-price="4,99 €">
+            <span class="plan-badge">Flexibel</span>
             <h3 class="plan-title">Monats-Pass</h3>
             <p class="plan-price">4,99 € <span>/ Monat</span></p>
             <p class="plan-desc">Für Familien, die flexibel bleiben möchten.</p>
@@ -915,15 +855,69 @@
               <li>✓ Digitaler Pass direkt per E-Mail</li>
               <li>✓ Monatlicher Tarif, jederzeit kündbar</li>
             </ul>
-            <div class="plan-pay-buttons">
-              <button type="button" class="pay-btn pay-paypal" onclick="choosePlanAndScroll('Monats-Pass (4,99 € / Monat)', 'PayPal')">Mit PayPal bezahlen</button>
-              <button type="button" class="pay-btn pay-sepa" onclick="choosePlanAndScroll('Monats-Pass (4,99 € / Monat)', 'SEPA-Überweisung')">SEPA-Überweisung</button>
+
+            <div class="card-order-box">
+              <div class="card-order-title">Monats-Pass anfordern (* Pflichtfelder)</div>
+              <form class="plan-order-form" action="https://formspree.io/f/xoeeware" method="POST">
+                <input type="hidden" name="tarif" value="Monats-Pass (4,99 € / Monat)">
+                <input type="hidden" name="zahlungsart" value="PayPal">
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label>Vor- und Nachname *</label>
+                    <input name="fullname" type="text" autocomplete="name" placeholder="Dein Name" required>
+                  </div>
+                  <div class="form-group">
+                    <label>E-Mail-Adresse *</label>
+                    <input name="email" type="email" autocomplete="email" placeholder="name@beispiel.de" required>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label>Personenanzahl</label>
+                    <select name="family-size">
+                      <option value="">Bitte auswählen</option>
+                      <option>2 Personen</option>
+                      <option>3 Personen</option>
+                      <option>4 Personen</option>
+                      <option>5 Personen</option>
+                      <option>6 oder mehr Personen</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Nachricht (optional)</label>
+                    <input name="message" type="text" placeholder="Fragen / Hinweise...">
+                  </div>
+                </div>
+
+                <label class="form-check">
+                  <input name="datenschutz" value="Akzeptiert" type="checkbox" required>
+                  <span>Ich habe die <a href="#datenschutz" data-modal="datenschutz" style="text-decoration: underline; color: var(--blue);">Datenschutzhinweise</a> sowie die <a href="#agb" data-modal="agb" style="text-decoration: underline; color: var(--blue);">AGB</a> gelesen und stimme zu. *</span>
+                </label>
+
+                <label class="form-check">
+                  <input name="widerrufsverzicht" value="Zugestimmt" type="checkbox" required>
+                  <span>Ich stimme ausdrücklich zu, dass FamiliGo vor Ablauf der 14-tägigen Widerrufsfrist mit der Bereitstellung des digitalen Passes beginnt und mein Widerrufsrecht damit erlischt (§ 356 Abs. 5 BGB). *</span>
+                </label>
+
+                <div class="plan-pay-buttons">
+                  <button type="button" class="pay-btn pay-paypal" onclick="handleCardOrder(this, 'PayPal')">Mit PayPal bezahlen</button>
+                  <button type="button" class="pay-btn pay-sepa" onclick="handleCardOrder(this, 'SEPA-Überweisung')">SEPA-Überweisung</button>
+                </div>
+
+                <div class="form-success-box">
+                  <h4>Bestellung eingegangen!</h4>
+                  <p class="success-text"></p>
+                  <div class="success-action-area"></div>
+                </div>
+              </form>
             </div>
           </article>
 
-          <!-- Jahres-Pass -->
-          <article class="plan-card" data-plan="Jahres-Pass" data-price="45,00 € / Jahr">
-            <span class="plan-badge" hidden>Ausgewählt</span>
+          <!-- Kasten 2: Jahres-Pass -->
+          <article class="plan-card" data-plan="Jahres-Pass" data-price="45,00 €">
+            <span class="plan-badge">Spar-Vorteil</span>
             <h3 class="plan-title">Jahres-Pass</h3>
             <p class="plan-price">45,00 € <span>/ Jahr</span></p>
             <p class="plan-desc">Für das ganze Jahr voller Ausflugsziele.</p>
@@ -932,9 +926,63 @@
               <li>✓ Digitaler Pass direkt per E-Mail</li>
               <li>✓ Rechnerisch nur 3,75 € pro Monat</li>
             </ul>
-            <div class="plan-pay-buttons">
-              <button type="button" class="pay-btn pay-paypal" onclick="choosePlanAndScroll('Jahres-Pass (45,00 € / Jahr)', 'PayPal')">Mit PayPal bezahlen</button>
-              <button type="button" class="pay-btn pay-sepa" onclick="choosePlanAndScroll('Jahres-Pass (45,00 € / Jahr)', 'SEPA-Überweisung')">SEPA-Überweisung</button>
+
+            <div class="card-order-box">
+              <div class="card-order-title">Jahres-Pass anfordern (* Pflichtfelder)</div>
+              <form class="plan-order-form" action="https://formspree.io/f/xoeeware" method="POST">
+                <input type="hidden" name="tarif" value="Jahres-Pass (45,00 € / Jahr)">
+                <input type="hidden" name="zahlungsart" value="PayPal">
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label>Vor- und Nachname *</label>
+                    <input name="fullname" type="text" autocomplete="name" placeholder="Dein Name" required>
+                  </div>
+                  <div class="form-group">
+                    <label>E-Mail-Adresse *</label>
+                    <input name="email" type="email" autocomplete="email" placeholder="name@beispiel.de" required>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label>Personenanzahl</label>
+                    <select name="family-size">
+                      <option value="">Bitte auswählen</option>
+                      <option>2 Personen</option>
+                      <option>3 Personen</option>
+                      <option>4 Personen</option>
+                      <option>5 Personen</option>
+                      <option>6 oder mehr Personen</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Nachricht (optional)</label>
+                    <input name="message" type="text" placeholder="Fragen / Hinweise...">
+                  </div>
+                </div>
+
+                <label class="form-check">
+                  <input name="datenschutz" value="Akzeptiert" type="checkbox" required>
+                  <span>Ich habe die <a href="#datenschutz" data-modal="datenschutz" style="text-decoration: underline; color: var(--blue);">Datenschutzhinweise</a> sowie die <a href="#agb" data-modal="agb" style="text-decoration: underline; color: var(--blue);">AGB</a> gelesen und stimme zu. *</span>
+                </label>
+
+                <label class="form-check">
+                  <input name="widerrufsverzicht" value="Zugestimmt" type="checkbox" required>
+                  <span>Ich stimme ausdrücklich zu, dass FamiliGo vor Ablauf der 14-tägigen Widerrufsfrist mit der Bereitstellung des digitalen Passes beginnt und mein Widerrufsrecht damit erlischt (§ 356 Abs. 5 BGB). *</span>
+                </label>
+
+                <div class="plan-pay-buttons">
+                  <button type="button" class="pay-btn pay-paypal" onclick="handleCardOrder(this, 'PayPal')">Mit PayPal bezahlen</button>
+                  <button type="button" class="pay-btn pay-sepa" onclick="handleCardOrder(this, 'SEPA-Überweisung')">SEPA-Überweisung</button>
+                </div>
+
+                <div class="form-success-box">
+                  <h4>Bestellung eingegangen!</h4>
+                  <p class="success-text"></p>
+                  <div class="success-action-area"></div>
+                </div>
+              </form>
             </div>
           </article>
         </div>
@@ -1059,39 +1107,35 @@
       cookieBanner.classList.remove("show");
     });
 
-    // Tarif aus den Preiskarten übernehmen & nach oben zum Formular scrollen
-    function choosePlanAndScroll(planValue, paymentValue) {
-      const planSelect = document.getElementById("selected-plan");
-      const paymentSelect = document.getElementById("payment-method");
-      if (planSelect) planSelect.value = planValue;
-      if (paymentSelect) paymentSelect.value = paymentValue;
+    // Bestellung direkt aus dem jeweiligen Tarif-Kasten absenden
+    function handleCardOrder(buttonEl, chosenPayment) {
+      const form = buttonEl.closest(".plan-order-form");
+      const card = buttonEl.closest(".plan-card");
+      const paymentInput = form.querySelector('input[name="zahlungsart"]');
+      paymentInput.value = chosenPayment;
 
-      const formSection = document.getElementById("vorbestellen");
-      if (formSection) {
-        formSection.scrollIntoView({ behavior: "smooth" });
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
       }
-    }
 
-    const form = document.getElementById("ajax-form");
-    const submitBtn = document.getElementById("submit-btn");
-    const successMessage = document.getElementById("success-message");
-    const successText = document.getElementById("success-text");
-    const successActionArea = document.getElementById("success-action-area");
-
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
       const formData = new FormData(form);
-      const chosenPlan = document.getElementById("selected-plan").value;
-      const chosenPayment = document.getElementById("payment-method").value;
-      const customerName = document.getElementById("fullname").value;
-
-      const isMonat = chosenPlan.includes("Monats-Pass");
-      const passShortName = isMonat ? "Monats-Pass" : "Jahres-Pass";
-      const passPrice = isMonat ? "4,99 €" : "45,00 €";
+      const passShortName = card.getAttribute("data-plan");
+      const passPrice = card.getAttribute("data-price");
+      const customerName = form.querySelector('input[name="fullname"]').value;
+      const isMonat = passShortName === "Monats-Pass";
       const targetPaypalUrl = isMonat ? PAYPAL_LINK_MONAT : PAYPAL_LINK_JAHR;
 
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Wird gesendet...";
+      const payButtonsArea = form.querySelector(".plan-pay-buttons");
+      const btnPaypal = form.querySelector(".pay-paypal");
+      const btnSepa = form.querySelector(".pay-sepa");
+      const successBox = form.querySelector(".form-success-box");
+      const successText = form.querySelector(".success-text");
+      const successActionArea = form.querySelector(".success-action-area");
+
+      btnPaypal.disabled = true;
+      btnSepa.disabled = true;
+      buttonEl.textContent = "Wird verarbeitet...";
 
       fetch(form.action, {
         method: "POST",
@@ -1100,17 +1144,17 @@
       }).then(response => {
         if (response.ok) {
           form.reset();
-          submitBtn.style.display = "none";
-          successMessage.style.display = "block";
+          payButtonsArea.style.display = "none";
+          successBox.style.display = "block";
 
           if (chosenPayment === "SEPA-Überweisung") {
             successText.textContent = "Vielen Dank! Deine Daten für den " + passShortName + " wurden übermittelt. Bitte überweise den Betrag über unsere Bankverbindung – nach Prüfung des Zahlungseingangs erstellen wir deinen Pass und senden ihn dir per E-Mail zu:";
-            successActionArea.innerHTML = `<button type="button" class="pay-btn pay-sepa" style="max-width: 280px; margin: 0 auto;" onclick="openSepaModal('${passShortName}', '${passPrice}', '${customerName.replace(/'/g, "\\'")}')">Bankverbindung anzeigen</button>`;
+            successActionArea.innerHTML = `<button type="button" class="pay-btn pay-sepa" style="max-width: 260px; margin: 0 auto;" onclick="openSepaModal('${passShortName}', '${passPrice}', '${customerName.replace(/'/g, "\\'")}')">Bankverbindung anzeigen</button>`;
             openSepaModal(passShortName, passPrice, customerName);
           } else {
             if (targetPaypalUrl && targetPaypalUrl.startsWith("http")) {
               successText.textContent = "Vielen Dank! Deine Daten wurden übermittelt. Du wirst jetzt direkt zu PayPal weitergeleitet – nach Prüfung deines Zahlungseingangs senden wir dir deinen Pass per E-Mail zu...";
-              successActionArea.innerHTML = `<a href="${targetPaypalUrl}" class="pay-btn pay-paypal" style="max-width: 280px; margin: 0 auto;">Weiter zu PayPal (${passPrice})</a>`;
+              successActionArea.innerHTML = `<a href="${targetPaypalUrl}" class="pay-btn pay-paypal" style="max-width: 260px; margin: 0 auto;">Weiter zu PayPal (${passPrice})</a>`;
               setTimeout(() => {
                 window.location.href = targetPaypalUrl;
               }, 800);
@@ -1121,15 +1165,19 @@
           }
         } else {
           alert("Es gab ein Problem beim Senden. Bitte versuchen Sie es noch einmal.");
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Jetzt bestellen & zur Zahlung";
+          btnPaypal.disabled = false;
+          btnSepa.disabled = false;
+          btnPaypal.textContent = "Mit PayPal bezahlen";
+          btnSepa.textContent = "SEPA-Überweisung";
         }
       }).catch(error => {
         alert("Es gab ein Netzwerkproblem. Bitte prüfen Sie Ihre Verbindung.");
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Jetzt bestellen & zur Zahlung";
+        btnPaypal.disabled = false;
+        btnSepa.disabled = false;
+        btnPaypal.textContent = "Mit PayPal bezahlen";
+        btnSepa.textContent = "SEPA-Überweisung";
       });
-    });
+    }
 
     let currentRubrik = "all";
     let currentRegion = "all";
@@ -1169,25 +1217,6 @@
         button.classList.add("active");
         currentRegion = button.getAttribute("data-filter-region");
         applyFilters();
-      });
-    });
-
-    const planCards = document.querySelectorAll(".plan-card");
-
-    function selectPlan(selectedCard) {
-      planCards.forEach(function(card) {
-        const selected = card === selectedCard;
-        card.classList.toggle("is-selected", selected);
-        const badge = card.querySelector(".plan-badge");
-        badge.hidden = !selected;
-      });
-    }
-
-    planCards.forEach(function(card) {
-      card.querySelectorAll(".pay-btn").forEach(function(btn) {
-        btn.addEventListener("click", function(e) {
-          selectPlan(card);
-        });
       });
     });
 
