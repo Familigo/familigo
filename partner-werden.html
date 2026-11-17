@@ -37,6 +37,8 @@
       flex-shrink: 0;
       -webkit-mask-image: radial-gradient(circle at 0% 50%, transparent 5px, black 6px), radial-gradient(circle at 100% 50%, transparent 5px, black 6px);
       -webkit-mask-size: 51% 100%; -webkit-mask-position: left, right; -webkit-mask-repeat: no-repeat;
+      mask-image: radial-gradient(circle at 0% 50%, transparent 5px, black 6px), radial-gradient(circle at 100% 50%, transparent 5px, black 6px);
+      mask-size: 51% 100%; mask-position: left, right; mask-repeat: no-repeat;
     }
     .form-body {
       padding: 30px;
@@ -77,7 +79,7 @@
       margin: 15px 0 8px 0;
       letter-spacing: 0.8px;
     }
-    /* Rabatte ohne Scrollen */
+    /* Rabatte ohne Scrollen und in normaler Groß-/Kleinschreibung */
     .checkbox-group {
       background: #f4f8fb;
       border: 2px solid #e2e8f0;
@@ -96,6 +98,8 @@
       color: #263449;
       cursor: pointer;
       line-height: 1.4;
+      text-transform: none;
+      letter-spacing: 0;
     }
     .checkbox-item:last-child {
       margin-bottom: 0;
@@ -152,6 +156,7 @@
       line-height: 1.5;
       margin: 0;
       text-transform: none !important;
+      letter-spacing: 0;
     }
     .consent-label input {
       margin-top: 2px;
@@ -308,7 +313,7 @@
       <!-- Erfolgsmeldung -->
       <div class="form-success-box" id="partner-success-box">
         <h3>Vielen Dank für Ihre Anmeldung!</h3>
-<p>Ihre Partnerschaftsanfrage ist erfolgreich bei uns eingegangen. Wir prüfen Ihre Angaben und senden Ihnen in Kürze Ihre persönliche Bestätigung sowie alle Details per E-Mail zu.</p>
+        <p>Ihre Partnerschaftsanfrage ist erfolgreich bei uns eingegangen. Wir prüfen Ihre Angaben und senden Ihnen in Kürze Ihre persönliche Bestätigung sowie alle Details per E-Mail zu.</p>
       </div>
 
     </div>
