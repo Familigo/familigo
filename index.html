@@ -71,12 +71,19 @@
     .button-secondary { background: var(--blue); color: var(--white); }
     .button-secondary:hover { background: #24528b; }
     
-    /* Hero */
+    /* Hero & Stempel */
     .hero {
-      padding: 78px 0 74px; overflow: hidden;
+      padding: 68px 0 74px; overflow: hidden;
       background: radial-gradient(circle at 90% 20%, #ffe4b3 0, transparent 28%), linear-gradient(135deg, #fff8ef 0%, #fff0d9 100%);
     }
     .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: center; gap: 48px; }
+    .coming-soon-stamp {
+      display: inline-block; margin-bottom: 14px; padding: 6px 14px;
+      background: var(--blue); color: #ffd17a; border: 2px solid var(--orange);
+      border-radius: 8px; font-size: 12px; font-weight: 900; letter-spacing: 1px;
+      text-transform: uppercase; transform: rotate(-3.5deg);
+      box-shadow: 0 6px 16px rgba(23, 59, 104, 0.16);
+    }
     .eyebrow {
       display: inline-block; margin-bottom: 18px; padding: 7px 12px; border-radius: 100px;
       background: #ffedc9; color: #84510a; font-size: 13px; font-weight: 800;
@@ -166,6 +173,12 @@
     
     /* Plans mit integrierten Eingabefeldern pro Kasten */
     .plans-section { background: #f0f5ff; }
+    .prelaunch-notice {
+      max-width: 680px; margin: 0 auto 30px; background: #fff8ef;
+      border: 2px solid var(--orange); border-radius: 14px; padding: 14px 20px;
+      text-align: center; color: var(--blue); font-size: 14px; font-weight: 700;
+      box-shadow: 0 4px 15px rgba(23, 59, 104, 0.05);
+    }
     .plans-grid {
       display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 28px; max-width: 980px; margin: 0 auto; align-items: stretch;
@@ -190,6 +203,12 @@
     /* Integrierter Bestellbereich innerhalb jedes Pass-Kastens */
     .card-order-box {
       margin-top: auto; padding-top: 20px; border-top: 2px dashed #e2e8f0;
+      transition: opacity 0.2s;
+    }
+    .card-order-box.is-disabled {
+      opacity: 0.58;
+      pointer-events: none;
+      user-select: none;
     }
     .card-order-title {
       font-size: 13px; font-weight: 900; color: var(--blue); text-transform: uppercase;
@@ -292,7 +311,7 @@
       .nav-inner { min-height: 70px; }
       .nav-links { gap: 12px; }
       .nav-links a:not(.nav-cta) { display: none; }
-      .hero { padding: 55px 0; }
+      .hero { padding: 48px 0 55px; }
       .hero-grid { grid-template-columns: 1fr; }
       .form-row-2 { grid-template-columns: 1fr; gap: 0; }
       .benefits-grid, .destination-grid, .steps-grid, .plans-grid { grid-template-columns: 1fr; }
@@ -322,6 +341,7 @@
     <section class="hero" id="start">
       <div class="container hero-grid">
         <div>
+          <div><span class="coming-soon-stamp">🎟️ In Vorbereitung · Bald geht’s los</span></div>
           <span class="eyebrow">Familienzeit in Euskirchen &amp; Umgebung</span>
           <h1>Mehr erleben.<br><span>Weniger bezahlen.</span></h1>
           <p class="hero-copy">
@@ -838,9 +858,14 @@
       <div id="vorbestellen"></div>
       <div class="container">
         <div class="section-heading">
+          <div id="plans-stamp-wrap"><span class="coming-soon-stamp">🎟️ In Vorbereitung · Verkaufsstart folgt</span></div>
           <span class="section-kicker">Transparente Preise</span>
-          <h2 class="section-title">Wähle deinen FamiliGo PASS</h2>
-          <p class="section-desc">Einfach deinen Wunsch-Pass ausfüllen und direkt per PayPal oder SEPA-Überweisung anfordern.</p>
+          <h2 class="section-title">Unsere Tarife im Überblick</h2>
+          <p class="section-desc">Hier seht ihr schon jetzt unsere geplanten Pass-Varianten. Sobald unser Partner-Netzwerk steht, wird die Bestellung hier direkt freigeschaltet.</p>
+        </div>
+
+        <div class="prelaunch-notice" id="prelaunch-notice">
+          Hinweis: Wir bauen aktuell noch unser Partner-Netzwerk in Euskirchen &amp; Umgebung auf – daher ist die Bestellung aktuell noch deaktiviert.
         </div>
 
         <div class="plans-grid">
@@ -1081,13 +1106,29 @@
 
   <script>
     // =========================================================================
-    // HIER DEINE ZWEI PAYPAL-ZAHLUNGSLINKS (OPTION B) EINFÜGEN:
+    // HIER DIE BESTELLUNG SCHARFSCHALTEN (false = gesperrt / true = aktiv):
     // =========================================================================
+    const VERKAUF_AKTIV     = false;
     const PAYPAL_LINK_MONAT = ""; // z.B. "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=..."
     const PAYPAL_LINK_JAHR  = ""; // z.B. "https://www.paypal.com/ncp/payment/..."
     // =========================================================================
 
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Bestell-Kästen sperren, solange VERKAUF_AKTIV auf false steht
+    if (!VERKAUF_AKTIV) {
+      document.querySelectorAll(".card-order-box").forEach(box => {
+        box.classList.add("is-disabled");
+        box.querySelectorAll("input, select, button").forEach(el => {
+          el.disabled = true;
+        });
+      });
+    } else {
+      const notice = document.getElementById("prelaunch-notice");
+      const stampWrap = document.getElementById("plans-stamp-wrap");
+      if (notice) notice.style.display = "none";
+      if (stampWrap) stampWrap.style.display = "none";
+    }
 
     const cookieBanner = document.getElementById("cookie-banner");
     const acceptAllBtn = document.getElementById("cookie-accept-all");
@@ -1109,6 +1150,8 @@
 
     // Bestellung direkt aus dem jeweiligen Tarif-Kasten absenden
     function handleCardOrder(buttonEl, chosenPayment) {
+      if (!VERKAUF_AKTIV) return;
+
       const form = buttonEl.closest(".plan-order-form");
       const card = buttonEl.closest(".plan-card");
       const paymentInput = form.querySelector('input[name="zahlungsart"]');
