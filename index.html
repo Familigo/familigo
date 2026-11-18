@@ -188,17 +188,36 @@
       padding: 30px; background: var(--white); border: 2px solid var(--orange);
       border-radius: 22px; box-shadow: var(--shadow);
     }
+    .plan-badge-row {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 10px;
+    }
     .plan-badge {
-      display: inline-block; align-self: flex-start; margin-bottom: 10px;
-      padding: 5px 11px; border-radius: 100px; background: #fff0d3; color: #84510a;
-      font-size: 12px; font-weight: 900;
+      display: inline-block; padding: 5px 11px; border-radius: 100px;
+      background: #fff0d3; color: #84510a; font-size: 12px; font-weight: 900;
+    }
+    .promo-banner-badge {
+      display: inline-block; padding: 5px 12px; border-radius: 8px;
+      background: var(--blue); color: #ffd17a; border: 1.5px solid var(--orange);
+      font-size: 11.5px; font-weight: 900; letter-spacing: 0.3px;
+      transform: rotate(-2deg); box-shadow: 0 4px 10px rgba(23, 59, 104, 0.14);
     }
     .plan-title { color: var(--blue); font-size: 26px; }
-    .plan-price { margin: 10px 0 12px; color: var(--blue); font-size: 39px; line-height: 1.2; font-weight: 900; letter-spacing: -1px; }
-    .plan-price span { font-size: 15px; font-weight: 600; letter-spacing: 0; color: var(--muted); }
+    .plan-price { margin: 10px 0 6px; color: var(--blue); font-size: 39px; line-height: 1.15; font-weight: 900; letter-spacing: -1px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
+    .plan-price .old-price {
+      font-size: 22px; font-weight: 800; color: #94a3b8;
+      text-decoration: line-through; text-decoration-color: #d97706; text-decoration-thickness: 2.5px;
+      letter-spacing: -0.5px;
+    }
+    .plan-price .new-price { color: var(--orange-dark); }
+    .plan-price span.price-unit { font-size: 15px; font-weight: 700; letter-spacing: 0; color: var(--muted); }
+    .promo-subnote {
+      display: inline-block; margin-bottom: 12px; padding: 4px 10px;
+      background: #e8f5e9; color: var(--green); border-radius: 8px;
+      font-size: 12.5px; font-weight: 800; align-self: flex-start;
+    }
     .plan-desc { margin-bottom: 18px; color: var(--muted); font-size: 14px; }
     .plan-features { margin-bottom: 22px; list-style: none; }
-    .plan-features li { margin: 8px 0; font-size: 14px; }
+    .plan-features li { margin: 8px 0; font-size: 14px; line-height: 1.45; }
 
     /* Integrierter Bestellbereich innerhalb jedes Pass-Kastens */
     .card-order-box {
@@ -869,12 +888,20 @@
         </div>
 
         <div class="plans-grid">
-          <!-- Kasten 1: Monats-Pass -->
-          <article class="plan-card" data-plan="Monats-Pass" data-price="4,99 €">
-            <span class="plan-badge">Flexibel</span>
+          <!-- Kasten 1: Monats-Pass mit Kennenlernangebot -->
+          <article class="plan-card" data-plan="Monats-Pass (Kennenlernangebot)" data-price="2,99 €">
+            <div class="plan-badge-row">
+              <span class="promo-banner-badge">🎟️ Kennenlernangebot · 1. Monat 2,99 €</span>
+              <span class="plan-badge">Flexibel</span>
+            </div>
             <h3 class="plan-title">Monats-Pass</h3>
-            <p class="plan-price">4,99 € <span>/ Monat</span></p>
-            <p class="plan-desc">Für Familien, die flexibel bleiben möchten.</p>
+            <p class="plan-price">
+              <span class="old-price">4,99 €</span>
+              <span class="new-price">2,99 €</span>
+              <span class="price-unit">/ 1. Monat</span>
+            </p>
+            <span class="promo-subnote">Einführungspreis im 1. Monat · danach 4,99 € / Monat</span>
+            <p class="plan-desc">Für Familien, die FamiliGo unverbindlich kennenlernen möchten.</p>
             <ul class="plan-features">
               <li>✓ Zugriff auf alle regionalen Partner &amp; Gastro</li>
               <li>✓ Digitaler Pass direkt per E-Mail</li>
@@ -884,7 +911,7 @@
             <div class="card-order-box">
               <div class="card-order-title">Monats-Pass anfordern (* Pflichtfelder)</div>
               <form class="plan-order-form" action="https://formspree.io/f/xoeeware" method="POST">
-                <input type="hidden" name="tarif" value="Monats-Pass (4,99 € / Monat)">
+                <input type="hidden" name="tarif" value="Monats-Pass Kennenlernangebot (2,99 € im 1. Monat, danach 4,99 € / Monat)">
                 <input type="hidden" name="zahlungsart" value="PayPal">
 
                 <div class="form-row-2">
@@ -942,14 +969,17 @@
 
           <!-- Kasten 2: Jahres-Pass -->
           <article class="plan-card" data-plan="Jahres-Pass" data-price="45,00 €">
-            <span class="plan-badge">Spar-Vorteil</span>
+            <div class="plan-badge-row">
+              <span class="plan-badge">Spar-Vorteil</span>
+            </div>
             <h3 class="plan-title">Jahres-Pass</h3>
-            <p class="plan-price">45,00 € <span>/ Jahr</span></p>
+            <p class="plan-price">45,00 € <span class="price-unit">/ Jahr</span></p>
             <p class="plan-desc">Für das ganze Jahr voller Ausflugsziele.</p>
             <ul class="plan-features">
               <li>✓ Zugriff auf alle regionalen Partner &amp; Gastro</li>
               <li>✓ Digitaler Pass direkt per E-Mail</li>
               <li>✓ Rechnerisch nur 3,75 € pro Monat</li>
+              <li>✓ Frühstarter-Vorteil: Von Anfang an dabei &amp; alle neuen Partner gratis mitnutzen</li>
             </ul>
 
             <div class="card-order-box">
@@ -1166,7 +1196,7 @@
       const passShortName = card.getAttribute("data-plan");
       const passPrice = card.getAttribute("data-price");
       const customerName = form.querySelector('input[name="fullname"]').value;
-      const isMonat = passShortName === "Monats-Pass";
+      const isMonat = passShortName.includes("Monats-Pass");
       const targetPaypalUrl = isMonat ? PAYPAL_LINK_MONAT : PAYPAL_LINK_JAHR;
 
       const payButtonsArea = form.querySelector(".plan-pay-buttons");
